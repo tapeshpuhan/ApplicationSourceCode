@@ -1,0 +1,91 @@
+/*
+ * BSTree.cpp
+ *
+ *  Created on: 02-Apr-2018
+ *      Author: tapesh
+ */
+
+#include "BaseFile.h"
+
+template<typename T>
+class BinST
+{
+
+
+public:
+	using tNode = struct Node
+			{
+				shared_ptr<Node> left;
+				shared_ptr<Node> right;
+				T info;
+				Node():left(nullptr),right(nullptr){}
+				Node(T i):left(nullptr),right(nullptr),info(i){}
+			};
+	void insert(const T &data);
+	BinST():_total(0),root(nullptr){}
+	BinST(const initializer_list<T> &list):_total(0),root(nullptr)
+	{
+		for(auto &at:list)
+		{
+			insert(at);
+		}
+	}
+	void InTraverse();
+private:
+	shared_ptr<tNode> root;
+	size_t _total;
+};
+template<typename T>
+void BinST<T>::insert(const T &data)
+{
+	shared_ptr<tNode> node = make_shared<tNode>(data);
+
+	if(nullptr == root)
+	{
+		root = node;
+		root->left = nullptr;
+		root->right = nullptr;
+		_total++;
+	}
+	else
+	{
+		shared_ptr<tNode> temp = root;
+		shared_ptr<tNode> po;
+
+		while(temp!=nullptr)
+		{
+			po = temp;
+			if(data<=temp->info)
+			{
+				temp = temp->left;
+			}
+			else
+			{
+				temp = temp->right;
+			}
+		}
+		if(data<=po->info)
+		{
+			po->left = node;
+		}
+		else
+		{
+			po->right = node;
+		}
+		_total++;
+	}
+
+}
+
+template<typename T>
+void BinST<T>::InTraverse()
+{
+
+}
+
+int main()
+{
+	BinST<int> obj = {23,4,56,234,123,5,67,34};
+
+	return 0;
+}

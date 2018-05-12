@@ -1,0 +1,189 @@
+/*
+ * ActiveObject.cpp
+ *
+ *  Created on: 08-Apr-2018
+ *      Author: tapesh
+ */
+
+#include "BaseFile.h"
+#include<atomic>
+using namespace std;
+
+namespace active
+{
+class Task
+{
+public:
+	int getPrio()
+	{
+		return _prio;
+	}
+	void setPrio(int prio)
+	{
+		//std::lock_guard<mutex> lk(mu);
+		_prio = prio;
+	}
+	Task():_prio(50){}
+	virtual ~Task(){}
+private:
+	//std::mutex mu;
+	int _prio;
+};
+
+class comp
+{
+public:
+	bool operator()(Task &l, Task &r)
+	{
+		return l.getPrio() < r.getPrio();
+	}
+};
+
+template<typename T>
+class PrioQueue
+{
+	std::priority_queue<T,deque<T>,comp> _Queue;
+	std::condition_variable _cond;
+	std::mutex mut;
+	std::atomic<int> _shutDown;
+public:
+	PrioQueue():_shutDown(0){
+
+	}
+	void push_task(T &&task)
+	{
+		std::lock_guard<mutex> lk(mut);
+		_Queue.push_back(move(task));
+		_cond.notify_one();
+	}
+	void push_task(const T &task)
+	{
+
+		std::lock_guard<mutex> lk(mut);
+		_Queue.push(task);
+		_cond.notify_one();
+	}
+	T waitPop()
+	{
+		T task;
+		std::unique_lock<mutex> lk(mut);
+		_cond.wait(lk,[=](){return _shutDown.load();});
+		if(!_Queue.empty())
+		{
+			task = _Queue.top();
+			_Queue.pop_front();
+		}
+		// Manual unlocking is done before notifying, to avoid waking up
+		// the waiting thread only to block again (see notify_one for details
+		lk.unlock();
+		_cond.notify_one();
+		return task;
+	}
+	void ShutDown()
+	{
+		_shutDown = 1;
+	}
+};
+
+class ActiveObj
+{
+	std::thread th;
+	PrioQueue<Task> Q_;
+public:
+
+	ActiveObj(){}
+	virtual ~ActiveObj(){
+		if(th.joinable())
+		{
+			th.join();
+		}
+	}
+	void start();
+	void methdpush(const Task &t);
+	void callback();
+	void shutdown();
+	virtual void call(Task &t)=0;
+};
+void ActiveObj::start()
+{
+	std::thread(th,&ActiveObj::callback);
+	if(th.joinable())
+	{
+		th.join();
+	}
+}
+void ActiveObj::methdpush(const Task &t)
+{
+	Q_.push_task(t);
+	start();
+}
+void ActiveObj::callback()
+{
+	Task &t = Q_.waitPop();
+	call(t);
+}
+void ActiveObj::shutdown()
+{
+	Q_.ShutDown();
+}
+/****************
+ * CLIENT CODE TO USE ABOVE FRAMEWORK
+ *
+ */
+class playinfo:public Task
+{
+	int min;
+	int sec;
+public:
+	playinfo():min(0),sec(0){
+		setPrio(1);
+	}
+	void setPaytime(const int m, const int s)
+	{
+		min = m;
+		sec = s;
+	}
+	void getPaytime(int &m, int &s)
+	{
+		m = min;
+		s = sec;
+	}
+
+};
+class playMeta:public Task
+{
+	string album;
+public:
+	playMeta():album(""){
+		setPrio(2);
+	}
+	void setmeta(const string& s)
+	{
+		album = s;
+	}
+	string getmeta()
+	{
+		return album;
+	}
+
+};
+class player:public ActiveObj
+{
+public:
+	void update();
+	void call(Task &t);
+};
+void player::update()
+{
+
+}
+void player::call(Task &t)
+{
+
+
+}
+int main()
+{
+	return 0;
+}
+}//end

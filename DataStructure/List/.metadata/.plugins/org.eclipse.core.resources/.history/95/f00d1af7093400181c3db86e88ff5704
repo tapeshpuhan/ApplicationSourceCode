@@ -1,0 +1,26 @@
+/*
+ * MoveConstroctor.cpp
+ *
+ *  Created on: 30-Mar-2018
+ *      Author: tapesh
+ */
+
+#include "BaseFile.h"
+
+class moveType
+{
+	vector<int> v;
+public:
+	moveType(){}
+	moveType(moveType &obj)
+	{
+		v.assign(obj.v.begin(),obj.v.end());
+	}
+	moveType(moveType &obj):v{obj.v}{}
+	moveType& operator=(moveType &obj):v{obj.v}
+	{
+
+	}
+};
+
+

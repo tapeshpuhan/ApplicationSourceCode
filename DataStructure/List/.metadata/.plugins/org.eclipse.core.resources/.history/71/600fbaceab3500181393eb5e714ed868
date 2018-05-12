@@ -1,0 +1,42 @@
+/*
+ * DQueue.cpp
+ *
+ *  Created on: 01-Apr-2018
+ *      Author: tapesh
+ */
+#include "BaseFile.h"
+
+int process(int arry[], int n, int k)
+{
+	deque<int> Q;
+	int j = 0;
+
+	for(int i = 0; i <= n-k;i++)
+	{
+		if(!Q.empty())
+		{
+			Q.push_back(i);
+		}
+		j = i;
+		while((!Q.empty()) && j<i+k)
+		{
+			if(arry[j]>=array[Q.front()])
+			{
+				Q.pop_back();
+				Q.push_back(j);
+			}
+		}
+		if(!Q.empty())
+		{
+			cout<<" "<<Q.front();
+		}
+	}
+}
+
+int main()
+{
+	int array[]={3,5,23,2,67,3,6,31,45,20,46};
+	process(array, 11, 3);
+	return 0;
+}
+

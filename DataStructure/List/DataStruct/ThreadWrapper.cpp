@@ -1,0 +1,106 @@
+/*
+ * ThreadWrapper.cpp
+ *
+ *  Created on: 28-Mar-2018
+ *      Author: tapesh
+ */
+/*
+#include<iostream>
+#include<vector>
+#include <map>
+#include <set>
+#include <list>
+#include <cmath>
+#include <ctime>
+#include <deque>
+#include <queue>
+#include <stack>
+#include <string>
+#include <bitset>
+#include <cstdio>
+#include <limits>
+#include <vector>
+#include <climits>
+#include <cstring>
+#include <cstdlib>
+#include <fstream>
+#include <numeric>
+#include <sstream>
+#include <iostream>
+#include <algorithm>
+#include <unordered_map>
+#include <thread>
+
+using namespace std;
+
+template< typename Hnd,typename arg>
+class MyTh
+{
+private:
+	vector<thread> _thread;
+
+public:
+	MyTh(Hnd hnd, arg &g)
+	{
+		_thread.push_back(thread(hnd,std::ref(g)));
+	}
+	bool join()
+	{
+		for(auto &at: _thread)
+		{
+			if(at.joinable())
+			{
+				at.join();
+			}
+		}
+		return 0;
+	}
+};
+
+class a
+{
+public:
+	void operator()(int b){cout<<"handel a\n";}
+};
+class b
+{
+public:
+	void operator()(int b){cout<<"handel b\n";}
+};
+class c
+{
+public:
+	void operator()(int b){cout<<"handel c\n";}
+};
+class d
+{
+public:
+	void operator()(int b){cout<<"handel d\n";}
+};
+class e
+{
+public:
+	void operator()(int b){cout<<"handel e\n";}
+};
+class f
+{
+public:
+	void operator()(int b){cout<<"handel f\n";}
+};
+
+int main()
+{
+	int i;
+	MyTh<a,int> name(a(),i);
+	MyTh<b,int> name1(b(),i);
+	MyTh<c,int> name2(c(),i);
+	MyTh<d,int> name3(d(),i);
+	MyTh<e,int> name4(e(),i);
+	MyTh<f,int> name5(f(),i);
+
+	name.join();
+	return 0;
+}
+
+*/
+

@@ -1,0 +1,32 @@
+/*
+ * XmlParser.cpp
+ *
+ *  Created on: 08-Apr-2018
+ *      Author: tapesh
+ */
+#include "XmlParser.h"
+#include<istream>
+#include <fstream>
+
+void XmlPars::ParseXml(const string &path)
+{
+	ifstream file(path);
+
+	if(!file.is_open())
+	{
+		cout<<"Error: file not found"<<endl;
+		return;
+	}
+	while(file.good())
+	{
+		string line;
+		getline(file,line);
+		cout<<line.c_str()<<endl;
+	}
+}
+
+int main()
+{
+	return 0;
+}
+

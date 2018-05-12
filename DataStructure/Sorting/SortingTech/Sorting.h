@@ -1,0 +1,59 @@
+/*
+ * Sorting.h
+ *
+ *  Created on: 17-Feb-2018
+ *      Author: tapesh
+ */
+
+
+#ifndef SORTING_H_
+#define SORTING_H_
+
+#include<iostream>
+#include<vector>
+#include<string>
+#include <chrono>
+using namespace std;
+
+
+enum SortType
+{
+	eSelection=0,
+	eInsertion,
+	eBubble,
+	merge
+};
+// Bace class to insert elements
+template<typename T>
+class Sorting
+{
+public:
+	void Insert(T data);
+	void Display();
+	void Swap(vector<T> &Value, int source,int dest);
+
+	virtual void Sort()=0;
+	virtual ~Sorting(){_data.clear();}
+protected:
+	vector<T> _data;
+};
+
+template<typename T>
+class SelectionSort:public Sorting<T>
+{
+public:
+
+	void Sort();
+};
+
+template<typename T>
+class MergeSort:public Sorting<T>
+{
+private:
+	vector<T> mergeArray(vector<T> &arr1, vector<T> &arr2);
+public:
+
+	void Sort();
+};
+
+#endif /* SORTING_H_ */

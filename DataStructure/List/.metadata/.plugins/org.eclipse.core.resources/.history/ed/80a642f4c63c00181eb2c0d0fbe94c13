@@ -1,0 +1,68 @@
+/*
+ * Task2.h
+ *
+ *  Created on: 10-Apr-2018
+ *      Author: tapesh
+ */
+
+#ifndef TASK2_H_
+#define TASK2_H_
+
+#include<iostream>
+#include<vector>
+#include<map>
+#include<string>
+#include<stack>
+#include<unordered_map>
+#include<memory>
+#include<thread>
+#include<initializer_list>
+#include<mutex>
+#include<atomic>
+using namespace std;
+
+template<typename T, typename Method>
+class Command
+{
+	std::map<T,Method> callback_;
+	std::thread thread_;
+	std::mutex mu_;
+	T type_;
+public:
+	template<typename ...Arg>
+	void exicute(T type, Arg ...arg)
+	{
+		thread_ = std::thread(&Command::call,this);
+		type_ = move(type);
+		//auto at = callback_[type];
+		//(*at)(arg...);
+	}
+	void regCallback(T data, Method fun)
+	{
+		callback_[data] = fun;
+	}
+	void UnregCallback(T data)
+	{
+		auto at = callback_.find(data);
+
+		if(at != callback_.end())
+		{
+			callback_.erase(at);
+		}
+	}
+
+	void call()
+	{
+		//auto at = callback_[type_.load()];
+		//(*at)(arg...);
+	}
+};
+
+class HmiCommand
+{
+public:
+	virtual void operator()(string str) =0;
+	virtual ~HmiCommand(){}
+};
+
+#endif /* TASK2_H_ */

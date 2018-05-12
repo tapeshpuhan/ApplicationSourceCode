@@ -1,0 +1,14 @@
+/*
+ * MoreEffectiveCpp.cpp
+ *
+ *  Created on: 30-Mar-2018
+ *      Author: tapesh
+ */
+
+/**
+ * What will happen if derive object is filled to base container with base object
+ see below example :
+ */
+
+
+

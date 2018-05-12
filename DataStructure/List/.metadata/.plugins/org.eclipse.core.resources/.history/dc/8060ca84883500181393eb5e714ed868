@@ -1,0 +1,110 @@
+/*
+ * Algorithm.cpp
+ *
+ *  Created on: 01-Apr-2018
+ *      Author: tapesh
+ */
+
+#include "BaseFile.h"
+
+void test1()
+{
+	vector<int> v={2,3,4,5,1,6};
+
+	if(all_of(v.cbegin(),v.cend(),[&](const int &i){return (i>=2);}))
+	{
+		cout<<"All values are greter than 2"<<endl;
+	}
+	else
+	{
+		cout<<"NOT All values are greter than 2"<<endl;
+	}
+}
+
+void test_findnot()
+{
+	vector<int> v={2,3,4,5,1,6};
+
+	auto at = find_if_not(v.cbegin(),v.cend(),[&](const int &i){return (i>=2);});
+	cout<<*at<<endl;
+	array<int, 10> arr =  { 3, 2, 5, 7, 3, 5, 6, 7 };
+	vector<int> res;
+	copy_if(arr.begin(), arr.end(), back_inserter(res),[](const int i) { return i == 5 || i == 7; });
+	for(auto &at:res)
+	{
+		cout<<at<<endl;
+	}
+}
+
+void test_foreach()
+{
+	vector<int> v={2,3,4,5,1,6};
+	int res= 0;
+	 for_each(v.cbegin(),v.cend(),[&](int a){res = res + a;});
+	cout<<res<<endl;
+}
+
+void test_replacec()
+{
+	vector<int> v={2,3,4,5,1,6};
+
+	replace_if(v.begin(),v.end(),[&](int a){return a>4;},100);
+	for_each(v.cbegin(),v.cend(),[&](int a){cout<<a<<endl;});
+}
+void test_sort()
+{
+	vector<int> v={2,3,4,5,1,6};
+
+	sort(v.begin(),v.end(),[&](int a, int b){return a<b;});
+	for_each(v.cbegin(),v.cend(),[&](int a){cout<<a<<endl;});
+}
+
+
+
+int Candy(){
+	int num;
+
+	vector<int> Ai= {2,3};// Reading input from STDIN
+	vector<int> Mi = {3, 2, 9, 11, 2};
+
+	//vector<int>::const_iterator it  =
+			//find_if(Mi.cbegin(),Mi.cend(),[&](int & a){return (find(Ai.cbegin(),Ai.cend(),a)!=Ai.end());});
+	//cout<<*it<<endl;
+	for(auto &at:Mi)
+	{
+		vector<int>::const_iterator it = find(Ai.cbegin(),Ai.cend(),at);
+		if(it!=Ai.end())
+		{
+			cout<<"YES"<<endl;
+		}
+		else
+		{
+			cout<<"NO"<<endl;
+		}
+	}
+	return 0;
+}
+
+int problem()
+{
+	vector<int> res;
+
+	vector<int> v = {1, 2, 3, 1, 4, 5, 2, 3, 6};
+	int k = 3;
+
+	for(int po =0; po<v.size();po++)
+	{
+		auto p = minmax_element(v.begin()+po,v.begin()+po+k);
+		//res.push_back(pair.second);
+	}
+	for(auto &at:res)
+	{
+		cout<<at<<" "<<endl;
+	}
+}
+
+int main()
+{
+	problem();
+return 0;
+}

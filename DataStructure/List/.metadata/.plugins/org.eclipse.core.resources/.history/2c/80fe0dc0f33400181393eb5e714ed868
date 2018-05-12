@@ -1,0 +1,25 @@
+/*
+ * MyMap.cpp
+ *
+ *  Created on: 31-Mar-2018
+ *      Author: tapesh
+ */
+
+#include "BaseFile.h"
+
+template<typename T, typename method>
+class MyMap
+{
+private:
+	map<T,method> _map;
+public:
+
+	MyMap(const initializer_list<T> &list)
+	{
+		for(auto &at:list)
+		{
+			_map.insert(at);
+		}
+	}
+};
+

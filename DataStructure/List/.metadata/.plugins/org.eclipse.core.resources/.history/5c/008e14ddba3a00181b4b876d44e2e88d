@@ -1,0 +1,41 @@
+/*
+ * ActiveObject.cpp
+ *
+ *  Created on: 08-Apr-2018
+ *      Author: tapesh
+ */
+
+#include "BaseFile.h"
+using namespace std;
+
+struct Task
+{
+	int getPrio()
+	{
+		return _prio;
+	}
+	void setPrio(int prio)
+	{
+		std::lock_guard<mutex> lk(mu);
+		_prio = prio;
+	}
+private:
+	std::mutex mu;
+	int _prio;
+};
+class comp
+{
+public:
+	bool operator()(Task &l, Task &r)
+	{
+		return l.getPrio() < r.getPrio();
+	}
+};
+
+template<typename T>
+class PrioQueue
+{
+	std::priority_queue<T,deque<T>,comp> _Queue;
+};
+
+

@@ -1,0 +1,39 @@
+/*
+ * LinierSearch.cpp
+ *
+ *  Created on: 13-Feb-2018
+ *      Author: tapesh
+ */
+
+#include "LinierSearch.h"
+
+template<typename T>
+bool LinerSearch<T>::searchValue(const T &value)
+{
+	for(auto at : data)
+	{
+		if(at == value)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+template<typename T>
+void LinerSearch<T>::print()
+{
+	for(auto at : data)
+	{
+		cout<<at<<" ";
+	}
+	cout<<endl;
+}
+
+int main()
+{
+	LinerSearch<int> var = {1,2,3,4,5,6};
+	var.searchValue(4);
+
+	return 0;
+}

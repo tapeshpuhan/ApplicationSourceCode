@@ -1,0 +1,51 @@
+/*
+ * Task.h
+ *
+ *  Created on: 11-Apr-2018
+ *      Author: tapesh
+ */
+
+
+
+#include<iostream>
+#include<string>
+#include<vector>
+#include<fstream>
+#include<map>
+#include<set>
+#include <limits>
+#include<memory>
+#include<set>
+#include <algorithm>
+#include<queue>
+#include <mutex>
+#include <condition_variable>
+#include<thread>
+#include <deque>
+#include<unordered_map>
+#include <functional>
+#include<atomic>
+
+using namespace std;
+
+template<typename T>
+class SinglTone
+{
+private:
+	SinglTone(){}
+	SinglTone(SinglTone&){}
+	SinglTone& operator=(SinglTone&){return *this;}
+	static shared_ptr<T> _instance;
+public:
+
+	static shared_ptr<T> getInstnce()
+	{
+		if(_instance==nullptr)
+		{
+			_instance = make_shared<T>();
+		}
+		return _instance;
+	}
+};
+template<typename T>
+shared_ptr<T> SinglTone<T>::_instance = nullptr;

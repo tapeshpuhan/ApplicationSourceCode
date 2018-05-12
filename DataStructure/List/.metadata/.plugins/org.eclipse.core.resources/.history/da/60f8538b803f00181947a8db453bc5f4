@@ -1,0 +1,38 @@
+/*
+ * Task.cpp
+ *
+ *  Created on: 11-Apr-2018
+ *      Author: tapesh
+ */
+
+#include"Task.h"
+
+bool isDuplicate(const vector<int> &v)
+{
+	std::map<int,int> m;
+
+	for(auto &at:v)
+	{
+		m[at]++;
+		if(m[at]>1)
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+class stack
+{
+	int x;
+public:
+	stack(int y):x(y){cout<<x;}
+};
+class A
+{};
+int main()
+{
+	A b;
+	stack a;a =23;
+	return 0;
+}

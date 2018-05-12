@@ -1,0 +1,27 @@
+/*
+ * Searching.h
+ *
+ *  Created on: 21-Feb-2018
+ *      Author: tapesh
+ */
+
+#ifndef SEARCHING_H_
+#define SEARCHING_H_
+
+template<typename T>
+class Searching
+{
+public:
+
+	void Insert(T data);
+
+
+	virtual int Search(T value)=0;
+	virtual ~Sorting(){_data.clear();}
+protected:
+	vector<T> _data;
+};
+
+
+
+#endif /* SEARCHING_H_ */

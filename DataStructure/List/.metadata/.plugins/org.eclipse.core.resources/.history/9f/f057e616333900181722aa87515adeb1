@@ -1,0 +1,107 @@
+/*
+ * ThreadPool.cpp
+ *
+ *  Created on: 06-Apr-2018
+ *      Author: tapesh
+ */
+#include<iostream>
+#include<functional>
+#include<thread>
+#include<vector>
+#include<mutex>
+#include<condition_variable>
+#include<initializer_list>
+#include<queue>
+
+class ThreadPool
+{
+public:
+	using Task = std::function<void()>;
+private:
+	std::vector<std::thread> pools_;
+	std::size_t poolSize_;
+	std::queue<Task> Q_;
+	std::mutex lock;
+	std::condition_variable condition_;
+	bool shut_=false;
+	void start();
+	void stop();
+public:
+	explicit ThreadPool(std::size_t pSize):poolSize_(pSize){
+		start();
+	}
+	void enQueue(Task t)
+	{
+		{
+			std::unique_lock<std::mutex> lk(lock);
+			Q_.emplace(t);
+		}
+		condition_.notify_all();
+	}
+	void start()
+	{
+		for(auto i=0; i< poolSize_;i++)
+		{
+
+			pools_.emplace_back([=]{
+				while(true)
+				{
+					Task task;
+					{
+						std::unique_lock<std::mutex> lk(lock);
+						condition_.wait(lk,[=]{return shut_||!Q_.empty();});
+						if(shut_)
+						{
+							break;
+						}
+						task = Q_.top();
+						Q_.pop();
+					}
+					task();
+				}
+			});
+		}
+	}
+
+	~ThreadPool()
+	{
+		stop();
+	}
+	void stop() noexcept
+	{
+		{
+			std::unique_lock<std::mutex> lk(lock);
+			shut_=true;
+		}
+		condition_.notify_all();
+		for(auto &at : pools_)
+		{
+			if(at.joinable())
+				at.join();
+		}
+	}
+
+};
+void fun1()
+{
+	std::cout<<"a"<<std::endl;
+}
+void fun2()
+{
+	std::cout<<"b"<<std::endl;
+}
+void fun3()
+{
+	std::cout<<"c"<<std::endl;
+}
+
+int main()
+{
+	ThreadPool pool;
+	pool.enQueue(fun1);
+	pool.enQueue(fun2);
+	pool.enQueue(fun3);
+	return 0;
+}
+
+

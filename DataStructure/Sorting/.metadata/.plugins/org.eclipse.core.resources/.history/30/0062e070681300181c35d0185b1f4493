@@ -1,0 +1,23 @@
+/*
+ * Sorting.h
+ *
+ *  Created on: 17-Feb-2018
+ *      Author: tapesh
+ */
+
+#ifndef SORTING_H_
+#define SORTING_H_
+
+template<typename T>
+class Sorting
+{
+public:
+	T data;
+}
+
+
+Class SelectionSort
+
+
+
+#endif /* SORTING_H_ */

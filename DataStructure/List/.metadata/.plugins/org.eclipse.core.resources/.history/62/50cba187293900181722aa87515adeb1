@@ -1,0 +1,36 @@
+/*
+ * ThreadPool.cpp
+ *
+ *  Created on: 06-Apr-2018
+ *      Author: tapesh
+ */
+#include<iostream>
+#include<thread>
+#include<vector>
+#include<mutex>
+#include<condition_variable>
+#include<initializer_list>
+
+class ThreadPool
+{
+private:
+	std::vector<std::thread> pools_;
+	std::size_t poolSize_;
+public:
+	ThreadPool(std::size_t pSize):poolSize_(pSize){}
+
+	bool addThread(const std::initializer_list<std::thread> &list)
+	{
+		std::size_t limit = 0;
+		for(auto& at: list)
+		{
+			if(limit<poolSize_)
+			{
+				pools_.emplace_back(at);
+			}
+		}
+	}
+};
+
+
+

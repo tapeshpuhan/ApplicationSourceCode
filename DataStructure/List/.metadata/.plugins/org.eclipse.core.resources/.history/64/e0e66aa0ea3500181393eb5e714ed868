@@ -1,0 +1,33 @@
+/*
+ * CrackCodeing.cpp
+ *
+ *  Created on: 02-Apr-2018
+ *      Author: tapesh
+ */
+
+
+#include "BaseFile.h"
+int swap(string &str, char s,char d)
+{
+	str[s]^=str[d];
+	str[d]^=str[s];
+	str[s]^=str[d];
+}
+
+void resverseString()
+{
+	string s = "TAPESWARN";
+	int n = s.size();
+
+	for(int i=0;i<n/2;i++)
+	{
+		swap(s,i,n-i-1);
+	}
+	cout<<s.c_str()<<endl;
+}
+
+int main()
+{
+	resverseString();
+	return 0;
+}

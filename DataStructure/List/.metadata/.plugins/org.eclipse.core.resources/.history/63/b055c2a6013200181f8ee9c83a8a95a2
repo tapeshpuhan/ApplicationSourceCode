@@ -1,0 +1,43 @@
+/*
+ * ThreadWrapper.cpp
+ *
+ *  Created on: 28-Mar-2018
+ *      Author: tapesh
+ */
+#include<iostream>
+#include<vector>
+#include <map>
+#include <set>
+#include <list>
+#include <cmath>
+#include <ctime>
+#include <deque>
+#include <queue>
+#include <stack>
+#include <string>
+#include <bitset>
+#include <cstdio>
+#include <limits>
+#include <vector>
+#include <climits>
+#include <cstring>
+#include <cstdlib>
+#include <fstream>
+#include <numeric>
+#include <sstream>
+#include <iostream>
+#include <algorithm>
+#include <unordered_map>
+#include <thread>
+
+using namespace std;
+
+template<typename T, string ThName, typename Hnd>
+class MyThName
+{
+private:
+	map<string,thread> _thread;
+};
+
+
+

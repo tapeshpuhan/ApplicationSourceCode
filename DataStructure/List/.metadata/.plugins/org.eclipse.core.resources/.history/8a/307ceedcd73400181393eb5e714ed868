@@ -1,0 +1,24 @@
+/*
+ * PriorityQueue.cpp
+ *
+ *  Created on: 31-Mar-2018
+ *      Author: tapesh
+ */
+
+#include "BaseFile.h"
+//#include <>
+
+class task
+{
+	task(int p):prio(p){}
+private:
+	int prio;
+};
+
+
+template<template T, class method>
+class PrioQueue
+{
+	priority_queue<T,method> _quwue;
+
+};

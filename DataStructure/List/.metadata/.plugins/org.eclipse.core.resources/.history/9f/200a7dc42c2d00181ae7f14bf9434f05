@@ -1,0 +1,74 @@
+/*
+ * Tree.cpp
+
+ *
+ *  Created on: 21-Mar-2018
+ *      Author: tapesh
+ */
+#include "Tree.h"
+
+template<typename T>
+bool BSt<T>::BSt(const initializer_list<T> &list)
+{
+	for(auto &at : list)
+	{
+		Insert(at);
+	}
+}
+template<typename T>
+bool BSt<T>::Insert(const T &data)
+{
+	tNode *temp = root;
+	tNode *node = new tNode;
+	tNode *po;
+
+	if(nullptr!=node)
+	{
+		node->data = data;
+	}
+	if(temp==nullptr)
+	{
+		root = node;
+	}
+	else
+	{
+		while(nullptr!=temp)
+		{
+			po = temp;
+			if(data <= temp->data)
+			{
+				temp = temp->Left;
+			}
+			else
+			{
+				temp = temp->Right;
+			}
+		}
+		if(nullptr!=po)
+		{
+			if(data <= po->data)
+			{
+				po->Left = node;
+			}
+			else
+			{
+				po->Right = node;
+			}
+		}
+	}
+return true;
+}
+
+template<typename T>
+bool BSt<T>::Traverse()
+{
+	tNode *temp = root;
+	if(temp == nullptr)
+	{
+		return false;
+	}
+	queue<tNode*> qUE;
+
+	qUE.push(temp);
+}
+

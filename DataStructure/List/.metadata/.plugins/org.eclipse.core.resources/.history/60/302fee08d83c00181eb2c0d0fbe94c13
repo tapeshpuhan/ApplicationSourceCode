@@ -1,0 +1,42 @@
+/*
+ * Task.cpp
+ *
+ *  Created on: 10-Apr-2018
+ *      Author: tapesh
+ */
+#include"Task1.h"
+
+
+void readInputSearch(const string &path, const string &input)
+{
+
+}
+
+
+int main(int argc, char **argv)
+{
+	if(argc!=3)
+	{
+		cout<<"./autocomplete <dictionary-file> <input-file>"<<endl;
+	}
+	else
+	{
+		string Dist;
+		string input:
+
+		if(argv[1]!=nullptr)
+		{
+			string Dist(argv[1]);
+		}
+		if(argv[2]!=nullptr)
+		{
+			string input(argv[2]);
+		}
+
+		readInputSearch(Dist, input);
+	}
+	return 0;
+}
+
+
+

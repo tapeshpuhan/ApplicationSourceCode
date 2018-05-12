@@ -1,0 +1,73 @@
+/*
+ * StackProblems.cpp
+ *
+ *  Created on: 24-Mar-2018
+ *      Author: tapesh
+ */
+
+
+#include<iostream>
+#include<vector>
+#include <map>
+#include <set>
+#include <list>
+#include <cmath>
+#include <ctime>
+#include <deque>
+#include <queue>
+#include <stack>
+#include <string>
+#include <bitset>
+#include <cstdio>
+#include <limits>
+#include <vector>
+#include <climits>
+#include <cstring>
+#include <cstdlib>
+#include <fstream>
+#include <numeric>
+#include <sstream>
+#include <iostream>
+#include <algorithm>
+#include <unordered_map>
+using namespace std;
+
+bool isFormatOk(string str)
+{
+	bool found = true;
+	set<char> Spair={'{','[','('};
+	map<char,char> Tpair = {{'}','{'},{']','['},{')','('}};
+	stack<char> Store;
+
+	for(auto &at : str)
+	{
+		if(Spair.find(at)!=Spair.end())
+		{
+			Store.push(at);
+		}
+		else if(Tpair.find(at)!=Tpair.end())
+		{
+			if(!Store.empty()&&(Tpair[at]==Store.top()))
+			{
+				Store.pop();
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	return found;
+}
+
+int main()
+{
+	cout<<"Is found "<<isFormatOk("{[()]}")<<endl;
+	return 0;
+}
+

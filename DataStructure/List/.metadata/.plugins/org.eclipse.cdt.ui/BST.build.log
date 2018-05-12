@@ -1,0 +1,6 @@
+10:49:57 **** Incremental Build of configuration Debug for project BST ****
+make all 
+make: Nothing to be done for 'all'.
+
+10:49:57 Build Finished (took 417ms)
+

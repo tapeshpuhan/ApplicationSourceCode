@@ -1,0 +1,71 @@
+/*
+ * ActiveObject.cpp
+ *
+ *  Created on: 08-Apr-2018
+ *      Author: tapesh
+ */
+
+#include "BaseFile.h"
+using namespace std;
+
+struct Task
+{
+	int getPrio()
+	{
+		return _prio;
+	}
+	void setPrio(int prio)
+	{
+		std::lock_guard<mutex> lk(mu);
+		_prio = prio;
+	}
+	Task():_prio(50){}
+private:
+	std::mutex mu;
+	int _prio;
+};
+class comp
+{
+public:
+	bool operator()(Task &l, Task &r)
+	{
+		return l.getPrio() < r.getPrio();
+	}
+};
+
+template<typename T>
+class PrioQueue
+{
+	std::priority_queue<T,deque<T>,comp> _Queue;
+	std::condition_variable _cond;
+	std::mutex mut;
+public:
+	void push_task(T &&task)
+	{
+		std::lock_guard<mutex> lk(mut);
+		_Queue.push_back(move(task));
+		_cond.notify_one();
+	}
+	void push_task(const T &task)
+	{
+
+		std::lock_guard<mutex> lk(mut);
+		_Queue.push_back(task);
+		_cond.notify_one();
+	}
+	T waitPop()
+	{
+		T task;
+		std::unique_lock<mutex> lk(mut);
+		_cond.wait(lk);
+		if(!_Queue.empty())
+		{
+			task = _Queue.front();
+			_Queue.pop_front();
+		}
+		return task;
+	}
+
+};
+
+

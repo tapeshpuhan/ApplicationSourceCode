@@ -1,0 +1,39 @@
+/*
+ * ObserverPattern.cpp
+ *
+ *  Created on: 30-Mar-2018
+ *      Author: tapesh
+ */
+#include "BaseFile.h"
+
+
+
+
+class IObserver
+{
+public:
+	void notify(int a)=0
+};
+
+class a:public IObserver
+{
+	void notify(int a)
+	{
+		cout<<"class a: "<<a<<endl;
+	}
+};
+
+class Serv
+{
+	vector<IObserver*> obj;
+public:
+	int notifyClient()
+	{
+		for(auto at : obj)
+		{
+			at->notify(100);
+		}
+	}
+};
+
+

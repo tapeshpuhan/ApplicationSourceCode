@@ -1,0 +1,37 @@
+05:32:08 **** Build of configuration Debug for project SortingAndSearching ****
+make all 
+Building file: ../Searching.cpp
+Invoking: GCC C++ Compiler
+g++ -std=c++14 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Searching.d" -MT"Searching.d" -o "Searching.o" "../Searching.cpp"
+Finished building: ../Searching.cpp
+ 
+Building file: ../Sorting.cpp
+Invoking: GCC C++ Compiler
+g++ -std=c++14 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Sorting.d" -MT"Sorting.d" -o "Sorting.o" "../Sorting.cpp"
+../Sorting.cpp: In instantiation of ‘void QuickSort<T>::Sort() [with T = int]’:
+../Sorting.cpp:445:1:   required from here
+../Sorting.cpp:189:9: warning: unused variable ‘size’ [-Wunused-variable]
+  size_t size = _lData.size();
+         ^
+../Sorting.cpp:190:9: warning: unused variable ‘TSize’ [-Wunused-variable]
+  size_t TSize = _2DArry.size();
+         ^
+../Sorting.cpp:191:9: warning: unused variable ‘count’ [-Wunused-variable]
+  size_t count = 0;
+         ^
+../Sorting.cpp: In instantiation of ‘std::vector<std::vector<T> > QuickSort<T>::GetPivotArray(std::vector<T>&) [with T = int]’:
+../Sorting.cpp:198:28:   required from ‘void QuickSort<T>::Sort() [with T = int]’
+../Sorting.cpp:445:1:   required from here
+../Sorting.cpp:251:16: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   for(int i=0;i<pIndex;i++)
+                ^
+../Sorting.cpp:266:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   for(int i=pIndex+1;i<size;i++)
+                       ^
+Finished building: ../Sorting.cpp
+ 
+Building target: SortingAndSearching
+Invoking: GCC C++ Linker
+g++  -o "SortingAndSearching"  ./Searching.o ./Sorting.o   
+Finished building target: SortingAndSearching
+ 

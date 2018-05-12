@@ -1,0 +1,36 @@
+/*
+ * Algorithm.cpp
+ *
+ *  Created on: 01-Apr-2018
+ *      Author: tapesh
+ */
+
+#include "BaseFile.h"
+
+void test1()
+{
+	vector<int> v={2,3,4,5,1,6};
+
+	if(all_of(v.cbegin(),v.cend(),[&](const int &i){return (i>=2);}))
+	{
+		cout<<"All values are greter than 2"<<endl;
+	}
+	else
+	{
+		cout<<"NOT All values are greter than 2"<<endl;
+	}
+}
+
+void test2()
+{
+	vector<int> v={2,3,4,5,1,6};
+
+	auto at = find_if_not(v.cbegin(),v.cend(),[&](const int &i){return (i>=2);})
+	cout<<*at<<endl;
+}
+
+int main()
+{
+	test1();
+return 0;
+}

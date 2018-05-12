@@ -1,0 +1,23 @@
+/*
+ * Vector.cpp
+ *
+ *  Created on: 15-Apr-2018
+ *      Author: tapesh
+ */
+#include<iostream>
+#include<vector>
+using namespace std;
+
+class A
+{
+	int i;
+public:
+	A():i(0){}
+	explicit A(int a):i(a){}
+	A(const A& o):i(o.i){
+		cout<<"Copy A()"<<endl;
+	}
+};
+
+
+

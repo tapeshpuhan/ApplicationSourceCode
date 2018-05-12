@@ -1,0 +1,38 @@
+/*
+ * XmlParser.cpp
+ *
+ *  Created on: 08-Apr-2018
+ *      Author: tapesh
+ */
+#include "XmlParser.h"
+#include<istream>
+#include <fstream>
+
+void XmlPars::ParseXml(const string &path)
+{
+	ifstream file(path);
+	map<string,string> data;
+	if(!file.is_open())
+	{
+		cout<<"Error: file not found"<<endl;
+		return;
+	}
+	while(file.good())
+	{
+		string line;
+		getline(file,line);
+		cout<<line.c_str()<<endl;
+	}
+}
+
+void XmlPars::getBookInfo(map<string,string> &op, const string &line)
+{
+
+}
+int main()
+{
+	std::shared_ptr<XmlPars> ptr = make_shared<XmlPars>();
+	ptr->ParseXml(string("/home/tapesh/C++11/file.xml"));
+	return 0;
+}
+

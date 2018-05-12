@@ -1,0 +1,15 @@
+05:49:17 **** Incremental Build of configuration Debug for project SortingTech ****
+make all 
+Building file: ../Sorting.cpp
+Invoking: GCC C++ Compiler
+g++  -std=c++11 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Sorting.d" -MT"Sorting.d" -o "Sorting.o" "../Sorting.cpp"
+Finished building: ../Sorting.cpp
+ 
+Building target: SortingTech
+Invoking: GCC C++ Linker
+g++  -o "SortingTech"  ./Sorting.o   
+Finished building target: SortingTech
+ 
+05:49:28 **** Incremental Build of configuration Debug for project SortingTech ****
+make all 
+make: Nothing to be done for 'all'.

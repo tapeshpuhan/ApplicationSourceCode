@@ -1,0 +1,19 @@
+/*
+ * XmlParser.cpp
+ *
+ *  Created on: 08-Apr-2018
+ *      Author: tapesh
+ */
+#include "XmlParser.h"
+#include<istream>
+
+void XmlPars::ParseXml(const string &path)
+{
+	ifstream file(path);
+}
+
+int main()
+{
+	return 0;
+}
+

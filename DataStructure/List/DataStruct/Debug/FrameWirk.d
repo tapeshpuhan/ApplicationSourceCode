@@ -1,0 +1,1 @@
+FrameWirk.d: ../FrameWirk.cpp

@@ -1,0 +1,15 @@
+01:53:02 **** Incremental Build of configuration Debug for project Exersize ****
+make all 
+Building file: ../Ex-CppAdvance.cpp
+Invoking: GCC C++ Compiler
+g++ -std=c++11 -Ipthread -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Ex-CppAdvance.d" -MT"Ex-CppAdvance.d" -o "Ex-CppAdvance.o" "../Ex-CppAdvance.cpp"
+Finished building: ../Ex-CppAdvance.cpp
+ 
+Building target: Exersize
+Invoking: GCC C++ Linker
+g++  -o "Exersize"  ./Ex-CppAdvance.o   -lpthread
+Finished building target: Exersize
+ 
+01:53:05 **** Incremental Build of configuration Debug for project Exersize ****
+make all 
+make: Nothing to be done for 'all'.

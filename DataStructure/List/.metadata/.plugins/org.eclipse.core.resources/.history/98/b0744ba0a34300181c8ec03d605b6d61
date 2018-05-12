@@ -1,0 +1,26 @@
+/*
+ * Ex-CppAdvance.cpp
+ *
+ *  Created on: 19-Apr-2018
+ *      Author: tapesh
+ */
+
+#include<iostream>
+#include<string>
+using namespace std;
+
+
+int fun(int &a)
+{
+	cout<<"fun "<<a<<endl;
+}
+int fun(const int &a)
+{
+	cout<<"fun "<<a<<endl;
+}
+int main()
+{
+	return 0;
+}
+
+

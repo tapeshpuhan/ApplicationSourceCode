@@ -1,0 +1,31 @@
+/*
+ * Test1.cpp
+ *
+ *  Created on: 08-Apr-2018
+ *      Author: tapesh
+ */
+#include <string>
+#include <stdexcept>
+#include <iostream>
+
+class Palindrome
+{
+public:
+    static bool isPalindrome(const std::string& word)
+    {
+    	std::string::size_type i=0;
+    	while(i <(word.size()/2))
+    	{
+    		if(word[i]!=word[word.size()-(i+1)])
+    	}
+
+        throw std::logic_error("Waiting to be implemented");
+    }
+};
+
+#ifndef RunTests
+int main()
+{
+    std::cout << Palindrome::isPalindrome("Deleveled");
+}
+#endif

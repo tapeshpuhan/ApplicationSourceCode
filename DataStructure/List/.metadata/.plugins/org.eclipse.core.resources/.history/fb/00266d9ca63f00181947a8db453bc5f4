@@ -1,0 +1,47 @@
+/*
+ * Pair.cpp
+ *
+ *  Created on: 14-Apr-2018
+ *      Author: tapesh
+ */
+#include"Task.h"
+
+template<typename T1, typename T2>
+class MyPair
+{
+	using first_t = T1;
+	using second_t = T2;
+
+	first_t first;
+	second_t second;
+public:
+	MyPair():first(T1()),second(T2()){}
+	MyPair(const first_t &a, const second_t b):first(a),second(b){}
+
+	template<typename U, typename V>
+	MyPair(const MyPair<U,V> &op):first(op.first),second(op.second){}
+
+	MyPair(const MyPair<T1,T2> &op):first(op.first),second(op.second){}
+
+	template<typename U, typename V>
+	MyPair operator =(const MyPair<U,V> &op){
+		if(this!=&op)
+		{
+			first = op.first;
+			second = op.second;
+		}
+		return *this;
+	}
+
+	MyPair operator =(const MyPair<T1,T2> &op){
+		if(this!=&op)
+		{
+			first = op.first;
+			second = op.second;
+		}
+		return *this;
+	}
+};
+
+
+

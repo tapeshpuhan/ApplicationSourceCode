@@ -1,0 +1,18 @@
+/*
+ * Task.cpp
+ *
+ *  Created on: 11-Apr-2018
+ *      Author: tapesh
+ */
+
+#include"Task.h"
+
+
+
+int main()
+{
+	MesgQ<player> ob;
+	player o1(1),o2(2),o3(3);
+
+	return 0;
+}

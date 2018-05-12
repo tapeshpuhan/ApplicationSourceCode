@@ -1,0 +1,43 @@
+/*
+ * Ex-CppAdvance.cpp
+ *
+ *  Created on: 19-Apr-2018
+ *      Author: tapesh
+ */
+
+#include<iostream>
+#include<string>
+using namespace std;
+
+/*
+ *
+ * Test Call Bay referance and
+ * call by r value referance
+ */
+void fun(int &a)
+{
+	cout<<"fun "<<a<<endl;
+}
+void fun(const int &a)
+{
+	cout<<"const fun "<<a<<endl;
+}
+/*
+void fun( int &&a)
+{
+	cout<<"const fun &&"<<a<<endl;
+}*/
+int main()
+{
+	int a = 5;
+	const int b = a;
+	fun(b);
+	fun(a);
+	fun(move(a));
+	fun(8);
+
+	cout<<a<<endl;
+	return 0;
+}
+
+

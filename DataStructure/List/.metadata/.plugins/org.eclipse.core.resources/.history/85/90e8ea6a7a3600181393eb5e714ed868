@@ -1,0 +1,177 @@
+/*
+ * BSTree.cpp
+ *
+ *  Created on: 02-Apr-2018
+ *      Author: tapesh
+ */
+
+#include "BaseFile.h"
+
+template<typename T>
+class BinST
+{
+
+
+public:
+	using tNode = struct Node
+			{
+		shared_ptr<Node> left;
+		shared_ptr<Node> right;
+		T info;
+		Node():left(nullptr),right(nullptr){}
+		Node(T i):left(nullptr),right(nullptr),info(i){}
+			};
+	void insert(const T &data);
+	BinST():_total(0),root(nullptr){}
+	BinST(const initializer_list<T> &list):_total(0),root(nullptr)
+	{
+		for(auto &at:list)
+		{
+			insert(at);
+		}
+	}
+	void PreTraverse();
+	void InTraverse();
+	void PostTraverse();
+	void operator()(T &data);
+private:
+	shared_ptr<tNode> root;
+	size_t _total;
+	std::mutex lk;
+};
+template<typename T>
+void BinST<T>::operator()(T &data)
+{
+	insert(data);
+}
+template<typename T>
+void BinST<T>::insert(const T &data)
+{
+	std::lock_guard<mutex> lock(lk);
+	shared_ptr<tNode> node = make_shared<tNode>(data);
+
+	if(nullptr == root)
+	{
+		root = node;
+		root->left = nullptr;
+		root->right = nullptr;
+		_total++;
+	}
+	else
+	{
+		shared_ptr<tNode> temp = root;
+		shared_ptr<tNode> po;
+
+		while(temp!=nullptr)
+		{
+			po = temp;
+			if(data<=temp->info)
+			{
+				temp = temp->left;
+			}
+			else
+			{
+				temp = temp->right;
+			}
+		}
+		if(data<=po->info)
+		{
+			po->left = node;
+		}
+		else
+		{
+			po->right = node;
+		}
+		_total++;
+	}
+
+}
+
+template<typename T>
+void BinST<T>::PreTraverse()
+{
+	std::lock_guard<mutex> lock(lk);
+	queue<shared_ptr<tNode>> Q;
+
+	if(nullptr==root)
+		return;
+	Q.push(root);
+	while(!(Q.empty()))
+	{
+		shared_ptr<tNode> po = Q.front();
+		cout<<po->info<<" ";
+		Q.pop();
+		if(nullptr!=po->left)
+			Q.push(po->left);
+		if(nullptr!=po->right)
+			Q.push(po->right);
+	}
+}
+
+template<typename T>
+void BinST<T>::InTraverse()
+{
+	std::lock_guard<mutex> lock(lk);
+	stack<shared_ptr<tNode>> Stack;
+	shared_ptr<tNode> po = root;
+
+	if(nullptr==root)
+		return;
+	while(true)
+	{
+		while(nullptr!=po)
+		{
+			Stack.push(po);
+			po = po->left;
+		}
+		if(Stack.empty())
+			return;
+		po = Stack.top();
+		cout<<po->info<<" ";
+		Stack.pop();
+		po = po->right;
+	}
+}
+template<typename T>
+void BinST<T>::PostTraverse()
+{
+	stack<shared_ptr<tNode>> Stack;
+	shared_ptr<tNode> po = root;
+	std::lock_guard<mutex> lock(lk);
+
+	if(nullptr==root)
+		return;
+	while(!Stack.empty())
+	{
+
+		Stack.push(po);
+		if(nullptr!=po->left) Stack.push(po->left);
+		if(nullptr!=po->right) Stack.push(po->right);
+		po = po->left;
+
+
+		po = Stack.top();
+		cout<<po->info<<" ";
+		Stack.pop();
+		po = po->right;
+	}
+}
+void thread1(){
+	BinST<int> obj = {23,4,56,234,123,5,67,34};
+	cout<<"Pre order"<<endl;
+	obj.PreTraverse();
+	cout<<"\nIn order"<<endl;
+	obj.InTraverse();
+	cout<<"\nPost order"<<endl;
+	obj.PostTraverse();
+}
+
+int main()
+{
+
+
+	std::thread thRead((thread1),11100);
+	if(thRead.joinable())
+		thRead.join();
+	return 0;
+}

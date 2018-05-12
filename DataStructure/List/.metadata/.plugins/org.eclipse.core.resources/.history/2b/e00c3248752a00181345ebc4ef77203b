@@ -1,0 +1,50 @@
+/*
+ * List.cpp
+ *
+ *  Created on: 18-Mar-2018
+ *      Author: tapesh
+ */
+
+#include<List.h>
+
+template<typename T>
+void List<T>::Insert(T data)
+{
+	tList *ptr = new tList;
+	if(ptr!=nullptr)
+	{
+		ptr->data = data;
+		ptr->next = nullptr;
+
+		if(nullptr == first)
+		{
+			first = ptr;
+			last = ptr;
+		}
+		else
+		{
+			last->next=ptr;
+			last=ptr;
+		}
+	}
+}
+
+template<typename T>
+void List<T>::Display()
+{
+	tList *temp = first;
+
+	cout<<"Elemets are"<<endl;
+	while(temp!=nullptr)
+	{
+		cout<<temp->data<<" ";
+		temp = temp->next;
+	}
+	cout<<endl;
+}
+
+int main()
+{
+	List<int> list = {2,5,67,84,2,5,74,67};
+	list->Display();
+}

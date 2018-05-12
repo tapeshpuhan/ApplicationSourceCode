@@ -1,0 +1,3 @@
+Sorting.d: ../Sorting.cpp ../Sorting.h
+
+../Sorting.h:

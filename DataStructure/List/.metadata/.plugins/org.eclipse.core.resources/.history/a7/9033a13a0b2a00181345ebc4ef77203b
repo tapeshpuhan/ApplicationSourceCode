@@ -1,0 +1,22 @@
+/*
+ * String.cpp
+ *
+ *  Created on: 17-Mar-2018
+ *      Author: tapesh
+ */
+
+#include<iostream>
+#include<string>
+using namespace std;
+
+
+void GetSubString(string sStr, string subStr)
+{
+
+}
+
+int main()
+{
+
+	return 0;
+}

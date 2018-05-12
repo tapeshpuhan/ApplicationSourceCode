@@ -1,0 +1,47 @@
+/*
+ * Distinary.cpp
+ *
+ *  Created on: 31-Mar-2018
+ *      Author: tapesh
+ */
+
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include<unordered_map>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+    unordered_map<string,unsigned int> map;
+    unsigned int value;
+    string name;
+    unsigned int number;
+
+    cin>>number;
+    for(int i =0; i < number;i++)
+    {
+        cin>>name;
+        cin>>value;
+        map.insert(make_pair(name,value));
+    }
+    cout<<endl;
+    for(unsigned int i =0; i < number;i++)
+    {
+        cin>>name;
+        unordered_map<string,unsigned int>::iterator it = map.find(name);
+        if(it!=map.end())
+        {
+            cout<<it->first.c_str()<<"="<<it->second<<endl;
+        }
+        else{
+        	cout<<"Not found"<<endl;
+        }
+    }
+
+    return 0;
+}
+

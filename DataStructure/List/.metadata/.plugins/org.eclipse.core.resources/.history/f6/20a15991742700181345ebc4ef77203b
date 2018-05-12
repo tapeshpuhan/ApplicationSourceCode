@@ -1,0 +1,84 @@
+/*
+ * BinarySearchTree.cpp
+ *
+ *  Created on: 14-Mar-2018
+ *      Author: tapesh
+ */
+#include "BinarySearchTree.cpp"
+
+template<typename T>
+void BsTree<T>::Insert(const T &Data)
+{
+	if(nullptr == root)
+	{
+		Node *Bt= new Node();
+		if(Bt!=nullptr)
+		{
+			Bt->Data = Data;
+			Bt->Left = nullptr;
+			Bt->Right = nullptr;
+		}
+		root = Bt;
+	}
+	else
+	{
+		Node *Bt= new Node();
+		if(Bt!=nullptr)
+		{
+			Bt->Data = Data;
+			Bt->Left = nullptr;
+			Bt->Right = nullptr;
+		}
+
+		Node* temp = root; // Create a temp ponter to traverse traa
+		Node* pos; // get the position of root node
+
+		while(temp != nullptr)
+		{
+			pos = temp;// store the postion
+			if(Data <= temp->Data)
+			{// if value is less equal go left
+				temp = temp->Left;
+			}
+			else
+			{// or go right
+				temp = temp->Right;
+			}
+		}
+		if(nullptr != pos)
+		{
+			if(Data <= pos->Data)
+			{
+				pos->Left = Bt; // if value is less insert in left
+			}
+			else
+			{// insert in right
+				pos->Right = Bt;
+			}
+		}
+	}
+}
+
+
+template<typename T>
+bool BsTree<T>::Search(const T &info)
+{
+	Node *temp = root;
+	bool found = false;
+
+	while(temp!=nullptr)
+	{
+		if(temp->Data == info)
+		{
+			found  = true;
+		}
+		if(info <= temp->Data)
+		{
+			temp = temp->Left; // if value is less insert in left
+		}
+		else
+		{// insert in right
+			pos->Right = Bt;
+		}
+	}
+}

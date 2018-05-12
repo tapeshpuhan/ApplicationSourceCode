@@ -1,0 +1,6 @@
+20:31:01 **** Incremental Build of configuration Debug for project TaskForBmw ****
+make all 
+make: Nothing to be done for 'all'.
+
+20:31:02 Build Finished (took 414ms)
+

@@ -1,0 +1,96 @@
+/*
+ * Task.cpp
+ *
+ *  Created on: 10-Apr-2018
+ *      Author: tapesh
+ */
+#include"Task1.h"
+
+
+void readInputSearch(const string &path, const string &input)
+{
+
+}
+
+
+void StoreDist(const string &path)
+{
+	tErrorMsg result = ErrorMsg::msg_ok;
+
+
+	ifstream file(path);
+	if(!file.is_open())
+	{
+		cout<<"ERROR: Error in File opening"<<path.c_str();
+		result = ErrorMsg::msg_read_error;
+	}
+	//if open file successful
+	if(ErrorMsg::msg_ok == result)
+	{
+		try	{
+			//go to previous line
+			GotoLine(file,position);
+			while(file.good())
+			{
+				string line;
+
+				if(ErrorMsg::msg_ok == result)
+				{
+
+					getline(file,line);
+					if(line !="")//check for valid line
+					{
+						info.insert(line);
+					}
+					if(file.good())
+					{
+						position = file.tellg();
+						//cout<<"position  "<<position<<endl;
+					}
+
+				}
+			}
+		}
+		catch(const ifstream::failure& e)
+		{
+			cout<<"ERROR : reading file error"<<e.what()<<endl;
+			result = ErrorMsg::msg_read_line_error;
+		}
+	}
+	file.close();
+
+#if Debug
+	cout<<"readCsvFile End"<<endl;
+#endif
+	return result;
+
+}
+
+
+int main(int argc, char **argv)
+{
+	if(argc!=3)
+	{
+		cout<<"./autocomplete <dictionary-file> <input-file>"<<endl;
+	}
+	else
+	{
+		string Dist;
+		string input;
+
+		if(argv[1]!=nullptr)
+		{
+			string Dist(argv[1]);
+		}
+		if(argv[2]!=nullptr)
+		{
+			string input(argv[2]);
+		}
+
+		readInputSearch(Dist, input);
+	}
+	return 0;
+}
+
+
+

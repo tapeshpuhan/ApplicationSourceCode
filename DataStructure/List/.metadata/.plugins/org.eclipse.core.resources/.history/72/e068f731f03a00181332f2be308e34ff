@@ -1,0 +1,41 @@
+#include <stdexcept>
+#include <iostream>
+#include <vector>
+#include <utility>
+
+class TwoSum
+{
+public:
+    static std::pair<int, int> findTwoSum(const std::vector<int>& list, int sum)
+    {
+    	for(int i = 0; i < list.size();i++)
+    	{
+    		for(int j = 0; j< list.size();j++)
+    		{
+    			if(i!=j)
+    			{
+    				if(sum == list[i]+list[j])
+    				{
+    					return std::pair<i,j>;
+    				}
+    			}
+    		}
+    	}
+        throw std::logic_error("Waiting to be implemented");
+    }
+};
+
+#ifndef RunTests
+int main()
+{
+    std::vector<int> list;
+    list.push_back(1);
+    list.push_back(3);
+    list.push_back(5);
+    list.push_back(7);
+    list.push_back(9);
+
+    std::pair<int, int> indices = TwoSum::findTwoSum(list, 12);
+    std::cout << indices.first << '\n' << indices.second;
+}
+#endif

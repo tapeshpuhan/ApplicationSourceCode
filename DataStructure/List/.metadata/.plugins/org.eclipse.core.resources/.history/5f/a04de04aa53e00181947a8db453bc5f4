@@ -1,0 +1,23 @@
+/*
+ * Task.cpp
+ *
+ *  Created on: 11-Apr-2018
+ *      Author: tapesh
+ */
+
+#include"Task.h"
+
+class Test:public SinglTone<Test>
+{
+public:
+	void display()
+	{
+		cout<<"Hi"<<endl;
+	}
+};
+
+int main()
+{
+	Test::getInstnce()->display();
+	return 0;
+}

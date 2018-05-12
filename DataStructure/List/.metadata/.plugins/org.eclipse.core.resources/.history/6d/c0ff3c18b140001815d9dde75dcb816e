@@ -1,0 +1,39 @@
+/*
+ * Set.cpp
+ *
+ *  Created on: 15-Apr-2018
+ *      Author: tapesh
+ */
+
+#include<set>
+#include<iostream>
+#include"Task.h"
+using namespace std;
+
+template<typename T>
+class lesser_t
+{
+public:
+	bool operator ()(const T &a, const T &b)
+	{
+		return a< b;
+	}
+};
+
+template<typename T>
+class greater_t
+{
+public:
+	bool operator ()(const T &a, const T &b)
+	{
+		return a > b;
+	}
+};
+
+int main()
+{
+	set<int, greater_t<int>> _set = {100,200,23,45,234,221,45,3,3,2,224,45,2,4,5,3,56,34,3};
+
+	PRINT(_set);
+	return 0;
+}

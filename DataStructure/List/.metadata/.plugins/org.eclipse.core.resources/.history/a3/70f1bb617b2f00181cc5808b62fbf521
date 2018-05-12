@@ -1,0 +1,62 @@
+/*
+ * Stack.cpp
+ *
+ *  Created on: 24-Mar-2018
+ *      Author: tapesh
+ */
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+
+template<typename T>
+class Stack
+{
+	bool Push(const T& data);
+	void Pop();
+	T& Top();
+	bool isEmpty();
+	Stack():_size(0){}
+	Stack(Stack &obj):_size(0)
+	{
+		copy(obj.begin(),obj.end(),begin());
+	}
+	vector<T>::const_iterator& begin()const{
+		return _stack.begin();
+	}
+	vector<T>::const_iterator& end()const{
+		return _stack.end();
+	}
+private:
+	vector<T> _stack;
+	size_t _size;
+
+};
+template<typename T>
+bool Stack<T>::Push(const T& data)
+{
+
+	_stack.push_back(data);
+	_size = _stack.size();
+	return true;
+}
+template<typename T>
+void Stack<T>::Pop()
+{
+	if(!isEmpty())
+	{
+		_stack.pop_back();
+		_size = _stack.size();
+	}
+}
+template<typename T>
+bool Stack<T>::isEmpty()
+{
+	return(_size == 0);
+}
+int main()
+{
+	stack<int> s;
+	s.push()
+			return 0;
+}

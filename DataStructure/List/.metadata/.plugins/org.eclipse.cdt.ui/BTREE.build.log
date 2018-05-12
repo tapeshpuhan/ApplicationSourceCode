@@ -1,0 +1,6 @@
+23:22:32 **** Incremental Build of configuration Debug for project BTREE ****
+make all 
+make: Nothing to be done for 'all'.
+
+23:22:33 Build Finished (took 1s.530ms)
+

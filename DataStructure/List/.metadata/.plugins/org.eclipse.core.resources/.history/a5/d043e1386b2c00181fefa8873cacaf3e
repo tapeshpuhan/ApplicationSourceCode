@@ -1,0 +1,26 @@
+/*
+ * Prepaire.cpp
+ *
+ *  Created on: 20-Mar-2018
+ *      Author: tapesh
+ */
+#include<iostream>
+#include<vector>
+using namespace std;
+
+class test
+{
+public:
+	void LeftRotation(vector<int> &V, int time);
+};
+
+void test::LeftRotation(vector<int> &V, int time)
+{
+
+}
+int main()
+{
+	return 0;
+}
+
+

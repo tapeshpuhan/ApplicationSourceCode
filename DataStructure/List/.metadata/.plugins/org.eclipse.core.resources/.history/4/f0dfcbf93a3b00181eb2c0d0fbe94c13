@@ -1,0 +1,46 @@
+#include <sstream>
+#include <vector>
+#include <iostream>
+#include<algorithm>
+using namespace std;
+
+vector<int> parseInts(string &str) {
+   // Complete this function
+	std::vector<int> v;
+	string::size_type po=0;
+	string::size_type lPo=str.find_first_not_of('\0',po);
+
+	while(lPo!=string::npos)
+	{
+		lPo=str.find_first_not_of('\0',++lPo);
+		string::size_type nPos = str.find(',',po);
+
+		string subStr = str.substr(po,nPos-po);
+		if(nPos==string::npos)
+			break;
+		v.emplace_back(stoi(subStr));
+		po = nPos+1;
+	}
+
+	/*while(lPo!=string::npos)
+	{
+		lPo=str.find_first_not_of('\0',po);
+		po++;
+		cout<<lPo<<endl;
+	}*/
+
+	for_each(v.begin(),v.end(),[&](int v){cout<<v<<endl;});
+
+
+}
+
+int main() {
+    string str ="23,4,56";
+    //cin >> str;
+    vector<int> integers = parseInts(str);
+    for(int i = 0; i < integers.size(); i++) {
+        cout << integers[i] << "\n";
+    }
+
+    return 0;
+}

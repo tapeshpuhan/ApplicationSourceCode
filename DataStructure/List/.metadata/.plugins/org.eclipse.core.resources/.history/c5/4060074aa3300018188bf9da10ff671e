@@ -1,0 +1,106 @@
+/*
+ * Queue.cpp
+ *
+ *  Created on: 26-Mar-2018
+ *      Author: tapesh
+ *      circular Queue
+ */
+
+#include<iostream>
+using namespace std;
+
+template<typename T, size_t size>
+class MyQueue
+{
+private:
+	T Queue[size];
+	size_t _size;
+	int rear;
+	int front;
+public:
+	MyQueue():_size(size),rear(-1),front(-1){}
+
+	bool enQueue(T data);
+	bool dQueue();
+	T& Qfront();
+	bool isEmpty();
+	bool isFull();
+	void display();
+};
+template<typename T, size_t size>
+bool MyQueue<T,size>::enQueue(T data)
+{
+	if(isFull())
+		return false;
+	if(isEmpty())
+	{
+		rear = front = 0;
+	}
+	Queue[rear] = data;
+	rear = (rear+1)%_size;
+	return true;
+}
+template<typename T, size_t size>
+bool MyQueue<T,size>::dQueue()
+{
+	if(isEmpty())
+	{
+		return false;
+	}
+	front = (front+1)%_size;
+	if(isFull())
+	{
+		rear = front = -1;
+	}
+}
+template<typename T, size_t size>
+T& MyQueue<T,size>::Qfront()
+{
+	if(!isEmpty())
+	{
+		return Queue[front];
+	}
+	return Queue[0];
+}
+template<typename T, size_t size>
+bool MyQueue<T,size>::isEmpty()
+{
+	if(front == -1 && rear == -1)
+		return true;
+	else
+		return false;
+}
+template<typename T, size_t size>
+bool MyQueue<T,size>::isFull()
+{
+	if(front == -1 && rear == -1)
+		return false;
+	return front == rear;
+}
+template<typename T, size_t size>
+void MyQueue<T,size>:: display()
+{
+	for(int i = 0; i < _size ; ++i)
+	{
+		cout<<Queue[i]<<" : ";
+	}
+	cout<<endl;
+	cout<<"front : "<<front<<endl;
+	cout<<"rear : "<<rear<<endl;
+}
+int main()
+{
+	MyQueue<int , 5> obj;
+
+	obj.enQueue(10);
+	obj.enQueue(20);
+	obj.enQueue(30);
+	obj.enQueue(40);
+	obj.enQueue(50);
+	obj.dQueue();
+	obj.enQueue(60);
+	obj.dQueue();
+	obj.enQueue(70);
+	obj.display();
+	return 0;
+}

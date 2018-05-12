@@ -1,0 +1,30 @@
+/*
+ * Task.cpp
+ *
+ *  Created on: 11-Apr-2018
+ *      Author: tapesh
+ */
+
+#include"Task.h"
+
+bool isDuplicate(const vector<int> &v)
+{
+	std::map<int,int> m;
+
+	for(auto &at:v)
+	{
+		m[at]++;
+		if(m[at]>1)
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+int main()
+{
+	std::vector<int> v= {3,4,5,3,6};
+	cout<<isDuplicate(v)<<endl;
+	return 0;
+}

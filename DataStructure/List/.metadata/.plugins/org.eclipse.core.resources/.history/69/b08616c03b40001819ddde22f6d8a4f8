@@ -1,0 +1,110 @@
+/*
+ * Pair.cpp
+ *
+ *  Created on: 14-Apr-2018
+ *      Author: tapesh
+ */
+#include"Task.h"
+
+template<typename T1, typename T2>
+class MyPair
+{
+	using first_t = T1;
+	using second_t = T2;
+
+
+public:
+	first_t first;
+	second_t second;
+
+	MyPair():first(T1()),second(T2()){}
+	MyPair(const first_t &a, const second_t b):first(a),second(b){}
+
+	template<typename U, typename V>
+	MyPair(const MyPair<U,V> &op):first(op.first),second(op.second){}
+
+	MyPair(const MyPair<T1,T2> &op):first(op.first),second(op.second){}
+
+	template<typename U, typename V>
+	MyPair<U,V>& operator =(const MyPair<U,V> &op){
+		if(this!=&op)
+		{
+			first = op.first;
+			second = op.second;
+		}
+		return *this;
+	}
+
+	MyPair<T1,T2>& operator =(const MyPair<T1,T2> &op){
+		if(this!=&op)
+		{
+			first = op.first;
+			second = op.second;
+		}
+		return *this;
+	}
+	MyPair<T1,T2> MakePair(T1 a, T2 b)
+	{
+
+		return MyPair<T1,T2>(a,b);
+	}
+
+};
+void Pair_test()
+{
+	MyPair<int , string> t(10, "tapu");
+	cout<<t.first<<endl;
+	cout<<t.second<<endl;
+	map<int , string> _m;
+
+	cout << " add "<<boolalpha;
+	cout<<numeric_limits<long>::max()<<endl;
+}
+void remove_test()
+{
+	vector<int> _v= {2,3,4,5,67,3,4,2,45,3,7};
+
+	cout<<"Size Before "<<_v.size()<<endl;
+	//vector<int>::iterator it = remove(_v.begin(),_v.end(),3);//remove 3 from the list
+
+	_v.erase(remove(_v.begin(),_v.end(),3),_v.end());
+
+	for_each(_v.begin(),_v.end(),[&](int a){cout<<a<<" ";});
+	cout<<"\nSize After "<<_v.size()<<endl;
+	//cout<<"Value "<<*it<<endl;
+	for(auto at : _v)
+	{
+		cout<<" "<<at;
+	}
+
+	//remove
+}
+void remove_test_asso()
+{
+	set<int> _v= {2,3,4,5,67,3,4,2,45,3,7};
+
+	cout<<"Size Before "<<_v.size()<<endl;
+	//set<int>::iterator it = remove(_v.begin(),_v.end(),3);//remove 3 from the list
+
+	//_v.erase(remove(_v.begin(),_v.end(),3),_v.end());
+
+	_v.erase(3);
+	for_each(_v.begin(),_v.end(),[&](int a){cout<<a<<" ";});
+	cout<<"\nSize After "<<_v.size()<<endl;
+	//cout<<"Value "<<*it<<endl;
+	for(auto at : _v)
+	{
+		cout<<" "<<at;
+	}
+	PRINT_ELEMENTS(_v,"All Elements");
+	//remove
+}
+int main()
+{
+
+	remove_test_asso();
+	return 0;
+}
+
+
+

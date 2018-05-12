@@ -1,0 +1,78 @@
+/*
+ * Ex-CppAdvance.cpp
+ *
+ *  Created on: 19-Apr-2018
+ *      Author: tapesh
+ */
+
+#include<iostream>
+#include<string>
+#include<memory>
+using namespace std;
+
+/*
+ *
+ * Test Call Bay referance and
+ * call by r value referance
+ */
+void fun(int &a)
+{
+	cout<<"fun "<<a<<endl;
+}
+void fun(const int &a)
+{
+	cout<<"const fun "<<a<<endl;
+}
+
+void fun( int &&a)
+{
+	cout<<"const fun &&"<<a<<endl;
+}
+void Rvaluetest()
+{
+	int a = 5;
+	const int b = a;
+	fun(b);
+	fun(a);
+	fun(move(a));
+	fun(8);
+
+	cout<<a<<endl;
+}
+
+class test{
+	int a;
+public:
+	 test(int x):a(x){}
+	 test(test&& o):a{o.a}
+	 {
+		 cout<<"Move Me"<<endl;
+
+	 }
+	 void display()
+	 {
+		 cout<<a<<endl;
+	 }
+};
+
+
+int main()
+{
+	shared_ptr<test> p = make_shared<test>(100);
+
+	shared_ptr<test> q ( move(p));
+	q->display();
+	cout<<"hii"<<p<<endl;
+	//p->display();
+	cout<<"hii end"<<endl;
+
+	test b(23);
+	test d(move(b));
+	d.display();
+	b.display();
+	string g = R"(hi\n)";
+	cout<<g.c_str()<<endl;
+	return 0;
+}
+
+

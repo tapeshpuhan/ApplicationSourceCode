@@ -1,0 +1,29 @@
+/*
+ * MergeSort.cpp
+ *
+ *  Created on: 01-Apr-2018
+ *      Author: tapesh
+ */
+
+#include "BaseFile.h"
+
+template<typename T>
+class merge_sort
+{
+	vector<T> _merge;
+public:
+	merge_sort(){}
+	merge_sort(const initializer_list<T> &list)
+	{
+		_merge.asign(list.begin(),list.end());
+	}
+	void r_merge(vector<T> data,size_t start, size_t end);
+	void r_mergeSort(vector<T> &data, size_t start, size_t end);
+	void recursion();
+};
+
+template<typename T>
+void merge_sort<T>::recursion()
+{
+
+}

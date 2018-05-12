@@ -1,0 +1,16 @@
+/*
+ * List.cpp
+ *
+ *  Created on: 18-Mar-2018
+ *      Author: tapesh
+ */
+
+#include<List.h>
+
+template<typename T>
+void List<T>::Insert(T data)
+{
+	tList ptr = unique_ptr<tList>(new tList);
+}
+
+

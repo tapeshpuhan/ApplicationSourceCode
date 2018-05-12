@@ -1,0 +1,67 @@
+/*
+ * BSTree.cpp
+ *
+ *  Created on: 02-Apr-2018
+ *      Author: tapesh
+ */
+
+#include "BaseFile.h"
+
+template<typename T>
+class BinST
+{
+
+
+public:
+	using tNode = struct Node
+			{
+				shared_ptr<tNode> left;
+				shared_ptr<tNode> right;
+				T info;
+				Node():left(nullptr),right(nullptr){}
+				Node(T i):left(nullptr),right(nullptr),info(i){}
+			};
+	BinST():_total(0),root(nullptr){}
+	BinST(const initializer_list<T> &list):_total(0),root(nullptr)
+	{
+		for(auto &at:list)
+		{
+			insert(at);
+		}
+	}
+	void insert(T &data);
+private:
+	shared_ptr<tNode> root;
+	size_t _total;
+};
+template<typename T>
+void BinST<T>::insert(T &data)
+{
+	shared_ptr<tNode> node = make_shared<tNode>(data);
+
+	if(nullptr == root)
+	{
+		root = node;
+		root->left = nullptr;
+		root->right = nullptr;
+	}
+	else
+	{
+		shared_ptr<tNode> temp = root;
+		shared_ptr<tNode> po;
+
+		while(temp!=nullptr)
+		{
+			po = temp;
+			if(data<=temp->info)
+			{
+				temp = temp->left;
+			}
+			else
+			{
+				temp = temp->right;
+			}
+		}
+	}
+
+}

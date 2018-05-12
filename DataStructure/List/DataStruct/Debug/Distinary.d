@@ -1,0 +1,1 @@
+Distinary.d: ../Distinary.cpp

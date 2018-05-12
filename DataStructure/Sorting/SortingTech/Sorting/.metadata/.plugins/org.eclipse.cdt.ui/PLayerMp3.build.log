@@ -1,0 +1,20 @@
+05:27:45 **** Build of configuration Debug for project PLayerMp3 ****
+make all 
+Building file: ../PlayerMp3.cpp
+Invoking: GCC C++ Compiler
+g++    -std=c++14 -I/usr/lib/x86_64-linux-gnu/glib-2.0 -I/usr/lib/x86_64-linux-gnu/gstreamer-1.0/include -I/usr/include/glib-2.0 -I/usr/include/gstreamer-1.0 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"PlayerMp3.d" -MT"PlayerMp3.d" -o "PlayerMp3.o" "../PlayerMp3.cpp"
+In file included from ../PlayerMp3.cpp:8:0:
+../PlayerMp3.h: In member function ‘virtual int Mp3Player::InitPlayer()’:
+../PlayerMp3.h:38:19: warning: no return statement in function returning non-void [-Wreturn-type]
+  int InitPlayer(){}
+                   ^
+Finished building: ../PlayerMp3.cpp
+ 
+Building target: PLayerMp3
+Invoking: GCC C++ Linker
+g++  -o "PLayerMp3"  ./PlayerMp3.o   
+Finished building target: PLayerMp3
+ 
+
+05:27:46 Build Finished (took 927ms)
+

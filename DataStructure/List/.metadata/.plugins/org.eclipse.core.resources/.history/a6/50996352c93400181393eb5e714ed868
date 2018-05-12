@@ -1,0 +1,22 @@
+/*
+ * PriorityQueue.cpp
+ *
+ *  Created on: 31-Mar-2018
+ *      Author: tapesh
+ */
+
+#include "BaseFile.h"
+
+class task1
+{
+	task1(int p):prio(p){}
+private:
+	int prio;
+};
+class task2
+{
+	task2(int p):prio(p){}
+private:
+	int prio;
+};
+

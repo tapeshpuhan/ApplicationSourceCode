@@ -1,0 +1,21 @@
+/*
+ * BinarySearchTree.cpp
+ *
+ *  Created on: 14-Mar-2018
+ *      Author: tapesh
+ */
+#include "BinarySearchTree.cpp"
+
+template<typename T>
+void BsTree<T>::Insert(T Data)
+{
+	if(nullptr == root)
+	{
+		Node *Bt= new Node();
+		if(BT!=nullptr)
+		{
+			Bt->Left = nullptr;
+		}
+	}
+}
+

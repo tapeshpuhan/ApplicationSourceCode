@@ -1,0 +1,45 @@
+/*
+ * Prepaire.cpp
+ *
+ *  Created on: 20-Mar-2018
+ *      Author: tapesh
+ */
+#include<iostream>
+#include<vector>
+using namespace std;
+
+class test
+{
+public:
+	void LeftRotation(vector<int> &V, int time);
+};
+
+void test::LeftRotation(vector<int> &V, int time)
+{
+	int po;
+
+	for(int i = 0; i < time; i++ )
+	{
+		po = V[0];
+		for(int j = 0; j < (V.size()-1);j++)
+		{
+			V[j] = V[j+1];
+		}
+		V[V.size()-1] = po;
+	}
+}
+int main()
+{
+	vector<int> array = {1,2,3,4,5};
+	test obj;
+
+	obj.LeftRotation(array,2);
+
+	for(auto at:array)
+	{
+		cout<<at<<" ";
+	}
+	return 0;
+}
+
+

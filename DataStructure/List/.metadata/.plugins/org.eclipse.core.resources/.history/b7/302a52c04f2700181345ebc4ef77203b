@@ -1,0 +1,26 @@
+/*
+ * MapUse.cpp
+ *
+ *  Created on: 14-Mar-2018
+ *      Author: tapesh
+ */
+#include"MapUse.h"
+
+template<typename T>
+void MapUse<T>::SortList(vector<T> &value, const vector<T> &ref)
+{
+	for(const auto &at : value)
+	{
+		uMap[at]++;
+	}
+	value.clear();
+	for(const auto &at : ref)
+	{
+		int fre = uMap[at];
+		while(fre!=0)
+		{
+			value.pop_back(uMap[at]);
+			fre--;
+		}
+	}
+}

@@ -1,0 +1,31 @@
+/*
+ * Tree.cpp
+
+ *
+ *  Created on: 21-Mar-2018
+ *      Author: tapesh
+ */
+#include "Tree.h"
+
+template<typename T>
+bool BSt<T>::Insert(const T &data)
+{
+	tNode *temp = root;
+	tNode *node = new tNode;
+
+	if(nullptr!=node)
+	{
+		node->data = data;
+	}
+	if(temp==nullptr)
+	{
+		root = node;
+	}
+	else
+	{
+
+	}
+}
+
+
+

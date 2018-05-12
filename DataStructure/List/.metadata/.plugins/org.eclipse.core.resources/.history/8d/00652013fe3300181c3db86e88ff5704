@@ -1,0 +1,38 @@
+/*
+ * Factory.cpp
+ *
+ *  Created on: 30-Mar-2018
+ *      Author: tapesh
+ */
+
+#include "BaseFile.h"
+class base
+{
+public:
+	virtual void f()=0;
+	~virtual ~base(){}
+};
+
+class dir1:public base
+{
+public:
+	void f()
+	{
+		cout<<"f() : dir1"<<endl;
+	}
+};
+class dir2:public base
+{
+public:
+	void f()
+	{
+		cout<<"f() : dir2"<<endl;
+	}
+};
+
+int main()
+{
+
+
+	return 0;
+}

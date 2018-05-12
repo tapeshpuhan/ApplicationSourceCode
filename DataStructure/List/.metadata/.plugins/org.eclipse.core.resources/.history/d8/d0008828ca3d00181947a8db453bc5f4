@@ -1,0 +1,31 @@
+/*
+ * Task.cpp
+ *
+ *  Created on: 11-Apr-2018
+ *      Author: tapesh
+ */
+
+#include"Task.h"
+
+void fun1()
+{
+	cout<<"fun1"<<endl;
+}
+void fun2()
+{
+	cout<<"fun2"<<endl;
+}
+void fun3()
+{
+	cout<<"fun3"<<endl;
+}
+
+int main()
+{
+	thrPool th(4);
+
+	th.exicute(fun1);
+	th.exicute(fun2);
+	th.exicute(fun3);
+	return 0;
+}

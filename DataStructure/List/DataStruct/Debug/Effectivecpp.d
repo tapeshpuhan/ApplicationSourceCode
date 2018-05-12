@@ -1,0 +1,1 @@
+Effectivecpp.d: ../Effectivecpp.cpp

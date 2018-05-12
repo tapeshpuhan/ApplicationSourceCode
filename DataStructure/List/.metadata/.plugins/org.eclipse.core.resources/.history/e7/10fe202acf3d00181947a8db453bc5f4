@@ -1,0 +1,190 @@
+/*
+ * Task.h
+ *
+ *  Created on: 11-Apr-2018
+ *      Author: tapesh
+ */
+
+#ifndef TASK_H_
+#define TASK_H_
+
+#include<iostream>
+#include<string>
+#include<vector>
+#include<fstream>
+#include<map>
+#include<set>
+#include <limits>
+#include<memory>
+#include<set>
+#include <algorithm>
+#include<queue>
+#include <mutex>
+#include <condition_variable>
+#include<thread>
+#include <deque>
+#include<unordered_map>
+#include <functional>
+#include<atomic>
+
+using namespace std;
+
+class thrPool
+{
+	vector<thread> _lTh;
+	vector<thread>::size_type max;
+public:
+
+	explicit thrPool(int m):max(m){}
+	void exicute(const function<void()> &f)
+	{
+		if(_lTh.size()<max)
+		{
+			//thread(f);
+			_lTh.emplace_back(thread(f));
+		}
+	}
+	~thrPool()
+	{
+		for(auto &at:_lTh)
+		{
+			if(at.joinable())
+				at.join();
+		}
+	}
+};
+
+class ThreadPool
+{
+  private:
+   TaskQ q;
+   std::vector<std::thread> _threads;
+   uint32_t _nofthreads;
+   std::atomic<int> _shutdown;
+   std::atomic<int> _nofthreadsfree;
+   static constexpr uint32_t _maxthreads = 5;
+   std::mutex mut;
+  public:
+
+  ThreadPool(uint32_t const nofthreads):_nofthreads(nofthreads),_shutdown(0),_nofthreadsfree(0) { }
+  ~ThreadPool()
+  {
+    for (auto& t : _threads ) {
+      if(t.joinable())
+      {
+        t.join();
+      }
+    }
+  }
+
+  void Shutdown()
+  {
+    _shutdown=1;
+    q.Shutdown();
+  }
+
+#if 0
+   template <typename F, typename G, typename... Args>
+   void preparetask(F&& func, G *obj, Args&&... args)
+   {
+       cout << "composeMsg..."<< endl;
+       fn_handler = std::bind(func,(G*)obj,std::forward<Args>(args)...);
+   }
+#endif
+
+ template <typename F,typename G, typename... Args>
+// void DoTask(F&& f,  std::shared_ptr<G>	 obj, Args&&... args)
+ void DoTask(int &taskid , F&& f, G& obj,std::string taskName, Args&&... args)
+
+  {
+
+     taskid=666;
+
+     int noofargs = sizeof...(Args);
+
+     std::lock_guard<std::mutex> lk(mut);
+     std::cout << "\ntask name : "<< taskName <<std::endl;
+     std::cout << "\nno of args: "<< noofargs <<std::endl;
+
+    //auto fn = std::bind(f,obj);
+
+
+    auto fn = std::bind(f,obj,std::placeholders::_1,std::placeholders::_2);
+
+
+    if(_nofthreadsfree.load())
+    {
+      std::cout << "*************** using threadpool thread *********** " << std::endl;
+      q.push(std::make_shared<Task_impl<Args...>>(fn,std::forward<Args>(args)...));
+    }
+    else if(_threads.size() < _maxthreads)
+    {
+      std::cout << "*************** Adding threadpool thread *********** " << std::endl;
+      _threads.push_back(std::thread(&ThreadPool::CallMethod,this));
+      q.push(std::make_shared<Task_impl<Args...>>(fn,std::forward<Args>(args)...));
+    }else
+    {
+       std::cout << "*************** using direct thread *********** " << std::endl;
+       _threads.push_back(std::thread(fn,std::forward<Args>(args)...));
+    }
+
+  }
+
+  void start()
+  {
+     std::lock_guard<std::mutex> lk(mut);
+    for(int i=0;i<_nofthreads; i++)
+    {
+      _threads.push_back(std::thread(&ThreadPool::CallMethod,this));
+    }
+   sleep(4);
+  }
+
+  uint32_t CountFreeThread() const
+  {
+    _nofthreadsfree.load();
+  }
+
+
+  void CallMethod()
+  {
+    while(true)
+    {
+      if(_shutdown.load()!=1)
+      {
+          /* when threads are waiting for task in queue then thread is free */
+          ++_nofthreadsfree;
+         std::cout << "_nofthreadsfree :" << _nofthreadsfree << std::endl;
+         std::shared_ptr<Task> pTask=q.wait_and_pop();
+         /* After shutdown initiated , pop will come with empty task.
+            This check is needed to prevent calling empty task
+         */
+         if(_shutdown.load()!=1)
+         {
+           /* thread got the job, reduce the count of free thread */
+           _nofthreadsfree--;
+           sched_param sch;
+           int policy;
+           pthread_getschedparam(pthread_self(), &policy, &sch);
+         std::cout << "policy :" << policy << std::endl;
+         std::cout << "priority:" << sch.sched_priority << std::endl;
+
+           sch.sched_priority = 20;
+         int res=  pthread_setschedparam(pthread_self(), SCHED_FIFO, &sch);
+std::cout << "setting policy :" << res << std::endl;
+           pTask->call();
+
+         res= pthread_getschedparam(pthread_self(), &policy, &sch);
+         std::cout << "After policy :" << policy << std::endl;
+         std::cout << "After priority:" << sch.sched_priority << std::endl;
+         std::cout << "After res:" << res << std::endl;
+         }
+      }
+      else
+      {
+        break;
+      }
+    }
+  }
+};
+#endif /* TASK_H_ */

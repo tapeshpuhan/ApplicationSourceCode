@@ -1,0 +1,35 @@
+/*
+ * Auto.cpp
+ *
+ *  Created on: 17-Mar-2018
+ *      Author: tapesh
+ */
+#include<iostream>
+using namespace std;
+
+void testAutoType()
+{
+	int x=0; //declare x type
+	const int &crx=x; //declare const ref type
+	auto aCrx = crx;
+
+	x = 42;
+	cout<<"Before modification aCrx "<<aCrx<<" crx "<<crx<<" x "<<x<<endl;
+}
+void testAutoType_1()
+{
+	int x=0; //declare x type
+	const int &crx=x; //declare const ref type
+	auto &aCrx = crx;
+
+	x = 42;
+	cout<<"Before modification aCrx "<<aCrx<<" crx "<<crx<<" x "<<x<<endl;
+}
+int main()
+{
+	testAutoType();
+	return 0;
+}
+
+
+

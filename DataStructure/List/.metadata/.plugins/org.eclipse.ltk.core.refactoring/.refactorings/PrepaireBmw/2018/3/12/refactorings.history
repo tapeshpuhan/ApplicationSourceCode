@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;PrepaireBmw/HashTables:RansomNote.cpp&apos; to &apos;HashTablesRansomNote.cpp&apos;" description="Rename resource &apos;HashTables:RansomNote.cpp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="HashTables::RansomNote.cpp" name="HashTablesRansomNote.cpp" stamp="1521764185408" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;PrepaireBmw/Effectivec++&apos; to &apos;Effectivecpp.cpp&apos;" description="Rename resource &apos;Effectivec++&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Effectivec++" name="Effectivecpp.cpp" stamp="1521829188600" updateReferences="true"/>
+</session>

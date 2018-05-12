@@ -1,0 +1,27 @@
+/*
+ * GoW.cpp
+ *
+ *  Created on: 07-Apr-2018
+ *      Author: tapesh
+ */
+#include "BaseFile.h"
+
+string f()
+{
+	return "abc";
+}
+
+void g()
+{
+	const string& s = f();
+	cout<<s.c_str()<<endl;
+}
+
+int main()
+{
+	g();
+	return 0;
+}
+
+
+

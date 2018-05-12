@@ -1,0 +1,27 @@
+/*
+ * DataStructure.cpp
+ *
+ *  Created on: 31-Mar-2018
+ *      Author: tapesh
+ */
+#include "BaseFile.h"
+
+
+int dec_bin(int d)
+{
+	for(int i = 1; i <= sizeof(int)*8;i++)
+	{
+		char c =(d>>i)&1;
+		cout<<c<<" "<<endl;
+	}
+	return 0;
+}
+
+int main()
+{
+	dec_bin(2);
+	return 0;
+}
+
+
+

@@ -1,0 +1,33 @@
+/*
+ * Vector.cpp
+ *
+ *  Created on: 15-Apr-2018
+ *      Author: tapesh
+ */
+#include<iostream>
+#include<vector>
+using namespace std;
+
+class A
+{
+	int i;
+public:
+	A():i(0){}
+	explicit A(int a):i(a){}
+	A(const A& o):i(o.i){
+		cout<<"Copy A()"<<endl;
+	}
+};
+
+int main()
+{
+	vector<A> v;
+	cout<<" v.size() "<<v.size()<<endl;
+	cout<<" v.empty() "<<v.empty()<<endl;
+	cout<<" v.max_size() "<<v.max_size()<<endl;
+	cout<<" v.capacity() "<<v.capacity()<<endl;
+	return 0;
+}
+
+
+

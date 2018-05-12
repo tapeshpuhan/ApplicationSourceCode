@@ -1,0 +1,136 @@
+/*
+ * Tree.cpp
+
+ *
+ *  Created on: 21-Mar-2018
+ *      Author: tapesh
+ */
+#include "Tree.h"
+
+template<typename T>
+ BSt<T>::BSt(const initializer_list<T> &list)
+{
+	for(auto &at : list)
+	{
+		Insert(at);
+	}
+}
+template<typename T>
+bool BSt<T>::Insert(const T &data)
+{
+	tNode *temp = root;
+	tNode *node = new tNode;
+	tNode *po;
+
+	if(nullptr!=node)
+	{
+		node->data = data;
+	}
+	if(temp==nullptr)
+	{
+		root = node;
+	}
+	else
+	{
+		while(nullptr!=temp)
+		{
+			po = temp;
+			if(data <= temp->data)
+			{
+				temp = temp->Left;
+			}
+			else
+			{
+				temp = temp->Right;
+			}
+		}
+		if(nullptr!=po)
+		{
+			if(data <= po->data)
+			{
+				po->Left = node;
+			}
+			else
+			{
+				po->Right = node;
+			}
+		}
+	}
+	return true;
+}
+
+template<typename T>
+bool BSt<T>::Traverse()
+{
+	tNode *temp = root;
+	if(temp == nullptr)
+	{
+		return false;
+	}
+	queue<tNode*> qUE;
+
+	qUE.push(temp);
+	while(!qUE.empty())
+	{
+		tNode * po = qUE.front();
+		cout<<po->data<<endl;
+		qUE.pop();
+		if(po->Left)
+			qUE.push(po->Left);
+		if(po->Right)
+			qUE.push(po->Right);
+	}
+	return true;
+}
+
+template<typename T>
+bool BSt<T>::isBst()
+{
+	tNode *temp = root;
+	if(temp == nullptr)
+	{
+		return false;
+	}
+	queue<tNode*> qUE;
+	bool isBst=false;
+
+	qUE.push(temp);
+	while(!qUE.empty())
+	{
+		isBst = true;
+		tNode * po = qUE.front();
+		cout<<po->data<<endl;
+		qUE.pop();
+		if(po->Left)
+		{
+			if(po->Left->data < po->data)
+			{
+				qUE.push(po->Left);
+			}
+			else
+			{
+				isBst = false;
+				break;
+			}
+		}
+		if(po->Right)
+		{
+			if(po->Right->data > po->data)
+			{
+			qUE.push(po->Right);
+			}
+			else
+			{
+				isBst = false;
+				break;
+			}
+		}
+	}
+	return isBst;
+}
+int main()
+{
+	BSt<int> obj = {10,20,6,300,30,400,505,45};
+	obj.Traverse();
+	return 0;
+}

@@ -1,0 +1,82 @@
+/*
+ * MoreEffectiveCpp.cpp
+ *
+ *  Created on: 30-Mar-2018
+ *      Author: tapesh
+ */
+
+/**
+ * What will happen if derive object is filled to base container with base object
+ see below example :
+ */
+#include "BaseFile.h"
+
+class base{
+	int i;
+public:
+	base():i(10)
+{
+		cout<<"Base"<<endl;
+}
+	base(base &c)
+	{
+		cout<<"Base Copy"<<endl;
+		i = c.i;
+	}
+	base & operator =(base &ob)
+	{
+		cout<<"Base asssignment"<<endl;
+		i = ob.i;
+		return *this;
+	}
+	~base()
+	{
+		cout<<"Base destroctor"<<endl;
+	}
+	void display()
+	{
+		cout<<"Display Base"<<i<<endl;
+	}
+};
+
+class dir:public base
+{
+	int j;
+	public:
+	dir():j(10)
+	{
+			cout<<"dir"<<endl;
+	}
+	dir(dir &c)
+		{
+			cout<<"dir Copy"<<endl;
+			j = c.j;
+		}
+	dir & operator =(dir &ob)
+		{
+			cout<<"dir asssignment"<<endl;
+			j = ob.j;
+			return *this;
+		}
+		~dir()
+		{
+			cout<<"dir destroctor"<<endl;
+		}
+		void display()
+		{
+			cout<<"Display Dir"<<j<<endl;
+		}
+};
+
+int main()
+{
+	dir o1;//,o2,o3,o4,o5;
+	vector<base*> v;// = {o1,o2,o3,o4,o5};
+
+	v.push_back(&o1);
+	for(auto &at:v)
+	{
+	//	cout<<at.display()<<endl
+	}
+	return 0;
+}

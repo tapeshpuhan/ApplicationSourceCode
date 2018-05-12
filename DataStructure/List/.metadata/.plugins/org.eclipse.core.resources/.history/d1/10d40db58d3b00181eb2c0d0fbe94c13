@@ -1,0 +1,29 @@
+/*
+ * XmlParser.h
+ *
+ *  Created on: 08-Apr-2018
+ *      Author: tapesh
+ */
+#include<iostream>
+#include<string>
+#include<vector>
+#include<memory>
+using namespace std;
+
+using tBook = struct BookInfo
+{
+	string author;
+	string titel;
+	string genre;
+	string price;
+	string Date;
+	string note;
+};
+
+class XmlPars
+{
+public:
+	void ParseXml(const string &path);
+	void getBookInfo(tBook &op);
+};
+

@@ -1,0 +1,23 @@
+/*
+ * Task.cpp
+ *
+ *  Created on: 11-Apr-2018
+ *      Author: tapesh
+ */
+
+#include"Task.h"
+
+
+
+int main()
+{
+	MesgQ<player> ob;
+	player o1(1),o2(2),o3(3);
+
+	ob.push(move(o1));
+	ob.push(move(o2));
+	ob.push(move(o3));
+	auto at = ob.pop();
+	at.display();
+	return 0;
+}

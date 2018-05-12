@@ -1,0 +1,42 @@
+/*
+ * GoW.cpp
+ *
+ *  Created on: 07-Apr-2018
+ *      Author: tapesh
+ */
+#include "BaseFile.h"
+
+string f()
+{
+	//return "abc";
+	string a="abd";
+	return a;
+}
+
+void g()
+{
+	//const string& s = f();
+	//string& s = f();
+
+	int x = 1;
+	  for( int i = 0; i < 100; ++i );
+	    /*// What will the next line do? Increment???????????/*/
+	    x = x+1;
+	  //std::cout << x << std::endl;
+
+	//cout<<s.c_str()<<endl;
+}
+struct X {
+  static bool f( int* p )
+  {
+    return p && 0[p] and not p[1:>>p[2];
+  };
+};
+int main()
+{
+	g();
+	return 0;
+}
+
+
+

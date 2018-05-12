@@ -1,0 +1,31 @@
+/*
+ * Set.cpp
+ *
+ *  Created on: 15-Apr-2018
+ *      Author: tapesh
+ */
+
+#include<set>
+#include<iostream>
+using namespace std;
+
+template<typename T>
+class lesser_t
+{
+public:
+	bool operator<(const T &a, const T &b)const
+	{
+		return a< b;
+	}
+};
+
+template<typename T>
+class greater_t
+{
+public:
+	bool operator>(const T &a, const T &b)const
+	{
+		return a > b;
+	}
+};
+

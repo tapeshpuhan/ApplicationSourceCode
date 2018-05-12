@@ -1,0 +1,57 @@
+/*
+ * Move.cpp
+ *
+ *  Created on: 22-Mar-2018
+ *      Author: tapesh
+ */
+
+#include<iostream>
+#include<vector>
+#include <map>
+#include <set>
+#include <list>
+#include <cmath>
+#include <ctime>
+#include <deque>
+#include <queue>
+#include <stack>
+#include <string>
+#include <bitset>
+#include <cstdio>
+#include <limits>
+#include <vector>
+#include <climits>
+#include <cstring>
+#include <cstdlib>
+#include <fstream>
+#include <numeric>
+#include <sstream>
+#include <iostream>
+#include <algorithm>
+#include <unordered_map>
+
+using namespace std;
+
+
+class Widget
+{
+	int *ptr;
+	const int value = 100000;
+
+public:
+	Widget():ptr(new int[value]){}
+
+	Widget(const Widget &rhs):ptr(new int[value])
+	{
+		cout<<"Copy Constructer"<<endl;
+		memcpy(ptr,rhs.ptr,sizeof(int)*value);
+	}
+	Widget& operator=(const Widget &rhs)
+	{
+		cout<<"Copy Assignment operator"<<endl;
+		memcpy(ptr,rhs.ptr,sizeof(int)*value);
+		return *this;
+	}
+};
+
+

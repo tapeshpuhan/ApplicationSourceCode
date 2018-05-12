@@ -1,0 +1,27 @@
+/*
+ * MapUse.cpp
+ *
+ *  Created on: 14-Mar-2018
+ *      Author: tapesh
+ */
+
+#include<iostream>
+#include<map>
+#include<vector>
+#include<string>
+#include <unordered_map>
+using namespace std;
+
+
+/**
+ *
+ * T-1 , Sort the list as per arry list
+ */
+
+template<typename T>
+class MapUse
+{
+	unordered_map<T,int> uMap;
+public:
+	void SortList(vector<T> &value, const vector<T> &ref);
+};

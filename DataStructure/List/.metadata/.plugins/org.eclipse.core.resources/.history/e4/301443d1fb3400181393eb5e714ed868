@@ -1,0 +1,37 @@
+/*
+ * MyMap.cpp
+ *
+ *  Created on: 31-Mar-2018
+ *      Author: tapesh
+ */
+
+#include "BaseFile.h"
+
+template<typename T,typename U, typename method>
+class MyMap
+{
+private:
+	map<T,U,method> _map;
+public:
+
+	MyMap(const initializer_list<T> &list)
+	{
+		for(auto &at:list)
+		{
+			_map.insert(pair<T,U>(at.first,at.second));
+		}
+	}
+	MyMap(MyMap &rh)
+	{
+		_map = rh._map;
+	}
+	MyMap(MyMap &&rh):_map {rh._map}
+	{
+
+	}
+	auto insert(T d1, U d2)->decltype(_map.insert(pair<T,U>(d1,d2)))
+	{
+		return _map.insert(pair<T,U>(d1,d2));
+	}
+};
+

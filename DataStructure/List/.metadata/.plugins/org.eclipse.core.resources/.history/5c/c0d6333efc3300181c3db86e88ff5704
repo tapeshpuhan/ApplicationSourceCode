@@ -1,0 +1,66 @@
+/*
+ * ObserverPattern.cpp
+ *
+ *  Created on: 30-Mar-2018
+ *      Author: tapesh
+ */
+#include "BaseFile.h"
+
+
+
+
+class IObserver
+{
+public:
+	virtual void notify(int a)=0;
+	virtual ~IObserver(){}
+};
+
+class a:public IObserver
+{
+public:
+	void notify(int a)
+	{
+		cout<<"class a: "<<a<<endl;
+	}
+};
+
+class b:public IObserver
+{
+public:
+	void notify(int a)
+	{
+		cout<<"class b: "<<a<<endl;
+	}
+};
+class Serv
+{
+	vector<IObserver*> obj;
+public:
+	int Register(IObserver* reg)
+	{
+		obj.push_back(reg);
+		return 0;
+	}
+	int notifyClient()
+	{
+		for(auto at : obj)
+		{
+			at->notify(100);
+		}
+		return 0;
+	}
+};
+
+int main()
+{
+	Serv obj;
+	obj.Register(new a);
+	obj.Register(new b);
+
+	obj.notifyClient();
+
+	return 0;
+}
+
+

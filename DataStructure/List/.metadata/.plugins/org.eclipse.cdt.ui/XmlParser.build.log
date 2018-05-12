@@ -1,0 +1,6 @@
+23:15:52 **** Incremental Build of configuration Debug for project XmlParser ****
+make all 
+make: Nothing to be done for 'all'.
+
+23:15:59 Build Finished (took 6s.600ms)
+

@@ -1,0 +1,79 @@
+/*
+ * Distinary.cpp
+ *
+ *  Created on: 31-Mar-2018
+ *      Author: tapesh
+ */
+
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include<unordered_map>
+#include<map>
+using namespace std;
+
+
+int main1() {
+	/* Enter your code here. Read input from STDIN. Print output to STDOUT */
+	unsigned long long number=0;
+	multimap<string,string> v;
+	string name;
+	string email;
+	cin>>number;
+	for(auto a =0l; a<number;a++)
+	{
+		cin>>name>>email;
+		if(name.length()<=20&&email.length()<=50)
+		{
+			string::size_type po = email.find_first_of("@");
+			string subStr = email.substr(po,email.length()-1);
+			if(subStr == "gmail.com")
+			v.insert(make_pair(name,email));
+		}
+	}
+	//sort(v.begin(),v.end(),[&](pair<string,string> &l, pair<string,string> &r){return l.first<r.first;});
+	for(auto &at:v)
+	{
+		cout<<at.first.c_str()<<endl;
+	}
+	return 0;
+}
+
+int main2() {
+	/* Enter your code here. Read input from STDIN. Print output to STDOUT */
+	unordered_map<string,unsigned int> map;
+	unsigned int value;
+	string name;
+	unsigned long int number;
+
+	cin>>number;
+	for(int i =0; i < number;i++)
+	{
+		cin>>name;
+		cin>>value;
+		map.insert(make_pair(name,value));
+	}
+	cout<<"*****************"<<map.size()<<endl;
+	for(auto &at : map)
+	{
+		cin>>name;
+		unordered_map<string,unsigned int>::iterator it = map.find(name);
+		if(it!=map.end())
+		{
+			cout<<it->first.c_str()<<"="<<it->second<<endl;
+		}
+		else{
+			cout<<"Not found"<<endl;
+		}
+	}
+
+	return 0;
+}
+
+int main()
+{
+	main1();
+	return 0;
+}

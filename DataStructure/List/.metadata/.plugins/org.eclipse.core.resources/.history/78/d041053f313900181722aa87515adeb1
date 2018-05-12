@@ -1,0 +1,67 @@
+/*
+ * ThreadPool.cpp
+ *
+ *  Created on: 06-Apr-2018
+ *      Author: tapesh
+ */
+#include<iostream>
+#include<functional>
+#include<thread>
+#include<vector>
+#include<mutex>
+#include<condition_variable>
+#include<initializer_list>
+#include<queue>
+
+template<typename R, typename ...Arg>
+class ThreadPool
+{
+public:
+	using Task = std::function<R(Arg ...arg)>;
+private:
+	std::vector<std::thread> pools_;
+	std::size_t poolSize_;
+	std::queue<Task> Q_;
+	std::mutex lock;
+	std::condition_variable condition_;
+	bool shut_=false;
+	void start();
+public:
+	explicit ThreadPool(std::size_t pSize):poolSize_(pSize){
+		start();
+	}
+	void enQueue(Task t)
+	{
+		{
+			std::unique_lock<std::mutex> lk(lock);
+			Q_.emplace(t);
+		}
+		condition_.notify_all();
+	}
+	void start()
+	{
+		for(auto i=0; i< poolSize_;i++)
+		{
+
+			pools_.emplace_back([=]{
+				while(true)
+				{
+					Task task;
+					{
+						std::unique_lock<std::mutex> lk(lock);
+						condition_.wait(lk,[=]{return shut_||!Q_.empty();});
+						if(shut_)
+						{
+							break;
+						}
+
+					}
+				}
+			});
+		}
+	}
+
+};
+
+
+

@@ -1,0 +1,63 @@
+/*
+ * Fixed_Array.cpp
+ *
+ *  Created on: 24-Mar-2018
+ *      Author: tapesh
+ */
+#include<iostream>
+#include<string>
+#include<algorithm>
+#include<initializer_list>
+
+using namespace std;
+
+template<typename T, size_t size>
+class fixed_array
+{
+private:
+	T array[size];
+public:
+	fixed_array(){}
+	fixed_array(const initializer_list<T> &data){
+		size_t i = 0;
+		for(auto &at: data)
+		{
+
+			//i<size ? (array[i++] = at):;
+			if(i<size)
+			{
+				array[i++] = at;
+			}
+		}
+	}
+	//template<typename T, size_t osize>
+	fixed_array(const fixed_array &rh);
+
+
+	//template<typename T, size_t osize>
+	fixed_array& operator = (const fixed_array &rh);
+
+	T begin(){return array;}
+	T end(){return array+(size-1);}
+};
+
+template<typename T, size_t osize>
+fixed_array<T,osize>::fixed_array(const fixed_array &rh);
+{
+	copy(rh.begin(),rh.begin()+min(size,osize),begin());
+}
+template<typename T, size_t osize>
+fixed_array& fixed_array<T,osize>::operator = (const fixed_array &rh);
+{
+	copy(rh.begin(),rh.begin()+min(size,osize),begin());
+	return *this;
+}
+
+int main()
+{
+	fixed_array<int, 4> v = {1,2,3,4};
+	fixed_array<int, 4> v2(v);
+	return 0;
+}
+
+

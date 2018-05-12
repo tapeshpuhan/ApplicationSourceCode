@@ -1,0 +1,1 @@
+Stack.d: ../Stack.cpp

@@ -1,0 +1,24 @@
+05:27:53 **** Build of configuration Debug for project Lambada ****
+make all 
+Building file: ../Lambada.cpp
+Invoking: GCC C++ Compiler
+g++ -std=c++14 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Lambada.d" -MT"Lambada.d" -o "Lambada.o" "../Lambada.cpp"
+../Lambada.cpp: In lambda function:
+../Lambada.cpp:57:83: warning: no return statement in function returning non-void [-Wreturn-type]
+     auto lamba1 = [](int value)->int{cout<<"Value printed as char "<<value<<endl; };
+                                                                                   ^
+../Lambada.cpp: In instantiation of ‘int GetMaxVector(const std::vector<_RealType>&, int (*)(int)) [with T = char]’:
+../Lambada.cpp:58:36:   required from here
+../Lambada.cpp:26:19: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  for(int i = 0; i < v.size();i++)
+                   ^
+Finished building: ../Lambada.cpp
+ 
+Building target: Lambada
+Invoking: GCC C++ Linker
+g++  -o "Lambada"  ./Lambada.o   
+Finished building target: Lambada
+ 
+
+05:27:55 Build Finished (took 1s.974ms)
+

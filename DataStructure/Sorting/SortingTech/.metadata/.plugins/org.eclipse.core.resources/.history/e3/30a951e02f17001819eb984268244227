@@ -1,0 +1,43 @@
+/*
+ * Searching.cpp
+ *
+ *  Created on: 21-Feb-2018
+ *      Author: tapesh
+ */
+
+#include "Searching.h"
+
+template<typename T>
+
+int BinarySearch<T>::Search(T value)
+{
+	int po = 0;
+	int mid = Searching<T>::_data.size()/2;
+	int size = Searching<T>::_data.size()-1;
+	bool found = false;
+
+
+	while(mid)
+	{
+		if(value > Searching<T>::_data[mid])
+		{
+			po = mid+1;
+			mid = (po+size)/2;
+		}
+		else if(value < Searching<T>::_data[mid])
+		{
+			size = mid-1;
+			mid = (po+size)/2;
+		}
+		else
+		{
+			po = mid;
+			found = true;
+			break;
+		}
+	}
+
+	return po;
+}
+
+

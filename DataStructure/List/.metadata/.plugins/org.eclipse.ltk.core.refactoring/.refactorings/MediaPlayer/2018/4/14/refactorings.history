@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;MediaPlayer/MediaMw/Framework.cpp&apos; to &apos;framework.cpp&apos;" description="Rename resource &apos;Framework.cpp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="MediaMw/Framework.cpp" name="framework.cpp" stamp="1522858392859" updateReferences="true"/>
+</session>

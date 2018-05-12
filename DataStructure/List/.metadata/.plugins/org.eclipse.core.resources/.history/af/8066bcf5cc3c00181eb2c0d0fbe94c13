@@ -1,0 +1,57 @@
+/*
+ * Task2.cpp
+ *
+ *  Created on: 10-Apr-2018
+ *      Author: tapesh
+ */
+#include "Task2.h"
+
+
+class HmiCommand
+{
+public:
+	virtual void operator()(string str) =0;
+	virtual ~HmiCommand(){}
+};
+class HmiPlay:public HmiCommand
+{
+public:
+	void operator()(string str)
+	{
+		cout<<"play"<<str.c_str()<<endl;;
+	}
+};
+class HmiPause:public HmiCommand
+{
+public:
+	void operator()(string str)
+	{
+		cout<<"pause"<<str.c_str()<<endl;;
+	}
+};
+class HmiStop:public HmiCommand
+{
+public:
+	void operator()(string str)
+	{
+		cout<<"stop : "<<str.c_str()<<endl;
+	}
+};
+
+int main()
+{
+	Command<string,shared_ptr<HmiCommand>> _play;
+
+	_play.regCallback(string("PLAY"),make_shared<HmiPlay>());
+	_play.regCallback(string("PAUSE"),make_shared<HmiPause>());
+	_play.regCallback(string("STOP"),make_shared<HmiStop>());
+	_play.exicute("PLAY",string("fiel.mp3"));
+	_play.exicute("PAUSE",string("fiel.mp3"));
+	_play.exicute("PLAY",string("fiel3.mp3"));
+
+	_play.Instance("PLAY")();
+	return 0;
+}
+
+
+

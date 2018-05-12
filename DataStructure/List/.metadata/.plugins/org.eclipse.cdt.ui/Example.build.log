@@ -1,0 +1,15 @@
+20:47:34 **** Incremental Build of configuration Debug for project Example ****
+make all 
+Building file: ../testing.cpp/testing.cpp
+Invoking: GCC C++ Compiler
+g++ -std=c++11 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"testing.cpp/testing.d" -MT"testing.cpp/testing.d" -o "testing.cpp/testing.o" "../testing.cpp/testing.cpp"
+Finished building: ../testing.cpp/testing.cpp
+ 
+Building target: Example
+Invoking: GCC C++ Linker
+g++  -o "Example"  ./testing.cpp/testing.o   
+Finished building target: Example
+ 
+
+20:47:35 Build Finished (took 876ms)
+

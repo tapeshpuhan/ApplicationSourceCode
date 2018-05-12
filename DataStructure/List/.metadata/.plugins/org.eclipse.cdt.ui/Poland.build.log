@@ -1,0 +1,15 @@
+02:18:58 **** Incremental Build of configuration Debug for project Poland ****
+make all 
+Building file: ../Set.cpp
+Invoking: GCC C++ Compiler
+g++ -std=c++11 -pthread -Ipthread -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Set.d" -MT"Set.d" -o "Set.o" "../Set.cpp"
+Finished building: ../Set.cpp
+ 
+Building target: Poland
+Invoking: GCC C++ Linker
+g++  -o "Poland"  ./Pair.o ./Set.o ./Task.o ./Vector.o   -lpthread
+Finished building target: Poland
+ 
+
+02:18:59 Build Finished (took 1s.524ms)
+

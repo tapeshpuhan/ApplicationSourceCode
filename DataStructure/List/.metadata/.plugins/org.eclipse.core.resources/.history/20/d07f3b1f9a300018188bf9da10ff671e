@@ -1,0 +1,58 @@
+/*
+ * Queue.cpp
+ *
+ *  Created on: 26-Mar-2018
+ *      Author: tapesh
+ */
+
+#include<iostream>
+using namespace std;
+
+template<typename T, size_t size>
+class MyQueue
+{
+private:
+	T Queue[size];
+	size_t _size;
+	int rear;
+	int front;
+public:
+	MyQueue():_size(size),rear(-1),front(-1){}
+
+	bool enQueue(T data);
+	bool dQueue();
+	T& front();
+	bool isEmpty();
+	bool isFull();
+	void display();
+};
+template<typename T, size_t size>
+bool MyQueue<T,size>::enQueue(T data)
+{
+
+}
+template<typename T, size_t size>
+bool MyQueue<T,size>::dQueue()
+{
+
+}
+template<typename T, size_t size>
+T& MyQueue<T,size>::front()
+{
+
+}
+template<typename T, size_t size>
+bool MyQueue<T,size>::isEmpty()
+{
+
+}
+template<typename T, size_t size>
+bool MyQueue<T,size>::isFull()
+{
+
+}
+template<typename T, size_t size>
+void MyQueue<T,size>:: display()
+{
+
+}
