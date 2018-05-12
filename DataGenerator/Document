@@ -1,0 +1,80 @@
+ 
+Task :-
+
+Develop a program using C++ 11 (or C++14) which does redundant calculations using multiple threads:
+
+•             Threads A-1…A-M generates fixed-size blocks of random data. Number of A- threads, number of the blocks, and size of a block are set via command line parameters. Number of blocks can be very big.
+
+•             Threads B-1…B-M calculate CRC32 values for the blocks (it is allowed to use a third-party implementation). Every block should be processed by every B-thread (there will be M CRC32 values for every block). Number of B- threads is also set via command line argument.
+
+•             After all B- threads calculate own CRC32 values for a particular block those CRC32 values should be compared and if they are not equal then the program should print a message to std::cout.
+
+•             Threads A- and B- should work concurrently.
+
+Solution Completed:-
+Point 1:- 
+Develop a program using C++ 11 (or C++14) which does redundant calculations using multiple threads:
+Solution:-
+The Implementation is executed using C++11 features .
+. Range based for loop c++11
+. Smart pointers used shared_ptr and unique_ptr
+. Used STL Vector and algorithims.
+. Lamda functions
+. C++11 Thread 
+
+Point 2:-
+
+Threads A-1…A-M generates fixed-size blocks of random data. Number of A- threads, number of the blocks, and size of a block are set via command line parameters. Number of blocks can be very big.
+Threads B-1…B-M calculate CRC32 values for the blocks (it is allowed to use a third-party implementation). Every block should be processed by every B-thread (there will be M CRC32 values for every block). Number of B- threads is also set via command line argument.
+
+Solution :-
+- Client Software can be able to create 'n' number of threads and its corresponding tasks will be executed using thread pool 
+  frame work.
+  
+- Currently, no maximum limit is set to thread pool hence, it will support the maximum limit supported by Hardware.
+  
+- Configuration is set through the user Input from command line and in case the configuration input is not set properly
+  SW will provide Helper message
+  
+- Thread A which is dealing with Generating Random Data . 
+  RedundantOp::GenBlock is the thread handler which updates datablock with random character data.
+  In current SW, system considers the data block is type of character.
+  
+- Thread B which will calculate the crc32 value for already generated Data blocks (by thread A) is handled by "RedundantOp::CrcBlock".
+  In case, crc32 value gets changed it reports old crc32, new crc32 values as well as data in output console for the end user.
+  
+  Point 3:-
+  Needs clarification for this Point.
+  As per my understanding , CRC value will remain constant until Datablock is not changed. 
+  When Thread B try to calculate the CRC value it will be same for each block . 
+  
+  For example, if we have 10 blocks and 5 threads,
+  Thread A fills the blocks with random data and parallelly Thread B generates CRC32 value for each block.
+  
+  CRC32 value is same for 1st block when calculated by 5 B threads.
+  
+  My approach is CRC value changes when thread A again tries to update the data in the same block.
+  Hence, in my implementation I have tried to regenerate the data values for the blocks and then compare the CRC values to check mismatches.
+   
+   Compilation:-
+   
+   compile.sh can be use to compile make file.
+   Executable name :- DataGenerator
+   
+   Input Example:-
+   ./DataGenerator 5 5 50 500
+   
+   help:: Command :: Number of Generator Thread
+    ::  Number of Crc Thread
+    ::  Number of data Blocks
+    ::  Size of data Blocks
+   
+   Debuging :-
+   
+   To Debug thread pool 
+   
+   enable #define th_Dbug 0 to #define th_Dbug 0 in file ThreadPool.cpp
+   
+   To Debug RedundantOp
+   RedundantOp.cpp enable #define DOperation 0 to #define DOperation 0
+
