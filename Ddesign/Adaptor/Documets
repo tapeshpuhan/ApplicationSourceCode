@@ -1,0 +1,25 @@
+ What is a adaptor pattorn?
+ 
+ Ans:- A adoptor pattorn is something adopting a not related already existing interface ,
+       just because client needs it .
+       
+       Example : In my sytem already "Shape" class is availabe with interface create and display ,
+       the responsibility for the shape interface to create a Geometrical figure such as "Trangle" , "Polygon"
+       or "rectangle" Etc .
+       
+       My system is running well , But suddenly my client request me to provide Same "Shape interface" to draw a 
+       Text , because clint dose not add any implimetation for a text . that means clint code do not want to chnage 
+       there inmplimetation to supoort "Text" .
+       
+ How It is benifits ?
+
+ We can have Solid design pattern by achiveing the Adaptor pattern . 
+ By Adopting existing interface we can able extend our support 
+ for new requairments insted modifying the existiong clinent code if existing service code .
+
+ Provide a Example of Adaptor design pattern ?
+ 
+ I provide a lib To draw diffrent shape like rectangle , trangle , circle which represent a geomectry shape.
+ and wants adapt a new concreate class which will help me to use same interface to draw a text shape .
+
+       
