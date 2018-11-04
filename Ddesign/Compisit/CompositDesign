@@ -1,0 +1,61 @@
+ 
+I like to have a example where the  the solution can be solved by composite design pattern .
+
+Basic feature of composite design pattern is
+
+
+Step1 :-A component which provide interface  to the user. The component can be categorized
+
+into various types .
+
+Step2 : A composite is provide a group .
+
+Step4 : A leaf which is a object in interest of user
+
+
+So a composite dills with a hierarchical structure , Composite provide a root and the leafs are its elements .
+
+And component is the interface to user .
+
+Example :-
+
+
+Varun is a biology student , requested me to provide some application throw which he can get  information
+
+about mammal, animals and birds and its features .
+
+
+how can i solve this using  a composit design pattern ?
+
+Human ,  monkey are group of mammal
+
+tiger , dog are group of animal
+
+pigeon , duck are group of birds.
+
+
+In this case we have three composites .
+
+1- mammal
+
+2. Animals
+
+3. Birds
+
+
+human , monkey are leafs of mammal
+
+tiger , dog are leafs of animals
+
+pigeon and duck are leafs of Birds
+
+
+The information which user wants to know about
+
+these objects are call the component.
+
+
+component can be named as BiologicalInfo (Provide information about various object)
+
+
+
