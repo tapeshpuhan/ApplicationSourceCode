@@ -58,8 +58,12 @@ class duck : public BiologicalInfo
 class Mammal : public CompositeFrame<BiologicalInfo>
 {
 	public:
+<<<<<<< HEAD
 	 
 	 std::string Info()override;
+=======
+	 void Display();
+>>>>>>> 03b8acc44b09133398ec5ef1b47bfcffb9424118
 };
 /*
  * A composite class for animal group 
@@ -67,8 +71,12 @@ class Mammal : public CompositeFrame<BiologicalInfo>
 class Animal : public CompositeFrame<BiologicalInfo>
 {
 	public:
+<<<<<<< HEAD
 	 
 	 std::string Info()override;
+=======
+	 void Display();
+>>>>>>> 03b8acc44b09133398ec5ef1b47bfcffb9424118
 };
 /*
  * A composite class for bird group 
@@ -76,6 +84,10 @@ class Animal : public CompositeFrame<BiologicalInfo>
 class Bird : public CompositeFrame<BiologicalInfo>
 {
 	public:
+<<<<<<< HEAD
 	 
 	 std::string Info()override;
+=======
+	 void Display();
+>>>>>>> 03b8acc44b09133398ec5ef1b47bfcffb9424118
 };

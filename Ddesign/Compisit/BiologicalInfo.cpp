@@ -40,27 +40,44 @@
 		return ss.str();
  }
 
+<<<<<<< HEAD
 string Mammal::Info()
+=======
+void Mammal::Display()
+>>>>>>> 03b8acc44b09133398ec5ef1b47bfcffb9424118
 {
 	for(auto &at : _Elements)
 	{
 		cout<<at->Info()<<endl;
 	}
+<<<<<<< HEAD
 	return "";
 }
 string Animal::Info()
+=======
+}
+void Animal::Display()
+>>>>>>> 03b8acc44b09133398ec5ef1b47bfcffb9424118
 {
 	for(auto &at : _Elements)
 	{
 		cout<<at->Info()<<endl;
 	}
+<<<<<<< HEAD
 	return "";
 }
 string Bird::Info()
+=======
+}
+void Bird::Display()
+>>>>>>> 03b8acc44b09133398ec5ef1b47bfcffb9424118
 {
 	for(auto &at : _Elements)
 	{
 		cout<<at->Info()<<endl;
 	}
+<<<<<<< HEAD
 	return "";
+=======
+>>>>>>> 03b8acc44b09133398ec5ef1b47bfcffb9424118
 }
