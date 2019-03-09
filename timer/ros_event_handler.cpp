@@ -4,6 +4,7 @@ RosEventHandler::RosEventHandler()
 {
     event_handler_map_.clear();
 }
+
 RosEventHandler::~RosEventHandler()
 {
      event_handler_map_.clear();
@@ -31,18 +32,15 @@ bool RosEventHandler::UnRegisterEvents(const std::string& event_name)
     }
     return result;
 }
+
 bool RosEventHandler::ExecuteEvent(const std::string& name)
 {
     bool result = false;
     
     if(event_handler_map_.find(name) != event_handler_map_.end())
     {
-        std::thread thread_handler([&](){
-                    ExicuteEventHandler(name);});
-        if(thread_handler.joinable())
-        {
-            thread_handler.join();
-        }
+        std::async(std::launch::async,[&](){
+											ExicuteEventHandler(name);});
         result = true;
     }
     return result;

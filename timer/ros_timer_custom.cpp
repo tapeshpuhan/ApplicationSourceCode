@@ -35,6 +35,7 @@ void RosTimerCustom::StopTimer()
 
 void RosTimerCustom::ExicuteTimer()
 {
+	std::cout<<"Execute time"<<std::endl;
     std::unique_lock<std::mutex> lock(timer_lock_);
     if(false == wakeup_with_condition_.wait_for(lock,std::chrono::milliseconds(100*time_ms_.load()),[&]()
                     {

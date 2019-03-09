@@ -14,7 +14,7 @@ int main()
     timer_->RegisterTime(handler);
     timer_->StartTimer(100);
     std::cout<<"call stop"<<std::endl;
-    timer_->StopTimer();
+    //timer_->StopTimer();
    
     return 0;
 }
