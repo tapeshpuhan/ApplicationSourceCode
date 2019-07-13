@@ -45,9 +45,7 @@ vector<int> climbingLeaderboard_old(vector<int> scores, vector<int> alice) {
           if(scores[j] == alice[index])
           {
               rank.push_back(prev_rank + 1);
-              index++;
-              //j++;
-              //prev_rank++;
+              index++;              
           }
           else if(scores[j] < alice[index])
           {
