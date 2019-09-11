@@ -20,8 +20,7 @@ private:
     
 	using tList = struct Node
 			{
-				Node *next;
-				Node *prev;
+				Node *next;				
 				T data;
 			};
 	tList *first;
@@ -41,7 +40,7 @@ public:
     
     void DisplayRec();
 	
-    List<T>& operator +=(const List<T> &l);
+    void Reverse();
 
 };
 

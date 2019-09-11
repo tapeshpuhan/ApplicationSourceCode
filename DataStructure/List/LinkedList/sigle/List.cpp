@@ -14,8 +14,7 @@ void List<T>::Insert(T data)
 	if(ptr!=nullptr)
 	{
 		ptr->data = data;
-		ptr->next = nullptr;
-		ptr->prev = nullptr;
+		ptr->next = nullptr;		
 
 		if(nullptr == first)
 		{
@@ -25,8 +24,7 @@ void List<T>::Insert(T data)
 		else
 		{
 
-			last->next=ptr;
-			ptr->prev = last;
+			last->next=ptr;			
 			last=ptr;
 
 		}
@@ -48,23 +46,11 @@ void List<T>::Display()
 }
 
 template<typename T>
-List<T>& List<T>::operator +=(const List<T> &l)
-{
-	tList *temp1 = l.first;
-	tList *temp2 = l.last;
-
-	last->next = temp1;
-	l.first->prev=last;
-	last = temp2;
-
-	return *this;
-}
-
-template<typename T>
 void List<T>::DisplayRec()
 {
     Display(first);
 }
+
 template<typename T>
 void List<T>::Display(tList *first)
 {
@@ -79,11 +65,31 @@ void List<T>::Display(tList *first)
     }
 }
 
+template<typename T>
+void List<T>::Reverse()
+{
+    tList *t1 = first;
+    tList *t2 = nullptr;
+    tList *t3 = nullptr;
+    
+    while(t1 != nullptr)
+    {
+        t2 = t1->next;
+        t1->next = t3;
+        t3 = t1;
+        t1 = t2;
+    }
+    first = t3;
+}
+
 int main()
 {
 	List<int> list = {2,5,67,84,2,5,74,67};
 	List<int> list2 = {200,500,670,840,200,500,740,670};
 	list.DisplayRec();
+    list.Reverse();
+    std::cout<<"Reversed "<<std::endl;
+    list.DisplayRec();
 	/*list +=  list2;
 	list.DisplayRec();*/
 	return 0;
