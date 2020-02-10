@@ -1,0 +1,9 @@
+Write a application for Hallow World.
+Based upon the policy .
+
+Simple programm
+
+1. Hallow world is policy class .
+i. A policy to print the output . it might be a console based output or file based output.
+ii . A policy to print diffrent language .may be english or german
+
