@@ -1,0 +1,3 @@
+/home/hp/tapesh/window_codac/CMakeFiles/rebuild_cache.dir
+/home/hp/tapesh/window_codac/CMakeFiles/mp3encoder.dir
+/home/hp/tapesh/window_codac/CMakeFiles/edit_cache.dir
