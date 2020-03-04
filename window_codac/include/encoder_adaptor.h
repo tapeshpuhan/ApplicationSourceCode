@@ -1,5 +1,5 @@
 //
-// Created by gl-273 on 2/15/20.
+// Created Tapeswar Puhan
 //
 
 #ifndef MP3ENCODER_ENCODER_ADAPTOR_H
@@ -9,7 +9,7 @@
 #include <encoder_core.h>
 namespace encoder
 {
-    template class EncoderCore<WavBrowser,Mp3Encoder>;
+template class EncoderCore<WavBrowser, Mp3Encoder>;
 }
 
-#endif //MP3ENCODER_ENCODER_ADAPTOR_H
+#endif  // MP3ENCODER_ENCODER_ADAPTOR_H

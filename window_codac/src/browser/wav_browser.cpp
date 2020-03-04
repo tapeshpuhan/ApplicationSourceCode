@@ -1,67 +1,65 @@
 //
-// Created by gl-273 on 2/14/20.
+// Created Tapeswar Puhan
 //
 
 #include <browser/wav_browser.h>
 
-
 namespace encoder
 {
-    WavBrowser::WavBrowser(const DirectoryName& input_directory):input_directory_{input_directory},
-                                                                 browser_{std::make_unique<DirectoryBrowser>()}
-    {
+WavBrowser::WavBrowser(const DirectoryName& input_directory)
+    : input_directory_{input_directory}, browser_{std::make_unique<DirectoryBrowser>()}
+{
+}
 
+void WavBrowser::InitializeBrowser()
+{
+    auto UpdateFileNameCallback = [this](const auto& file_name) { this->HandelFileName(file_name); };
+    browser_->RegisterTOUpdateFileName(UpdateFileNameCallback);
+
+    auto BrowseDirectoryCallback = [this]() {
+        browser_->BrowseDirectory(input_directory_, FileExtensionFilter::WavFile);
+    };
+    std::thread th{BrowseDirectoryCallback};
+    if (th.joinable())
+    {
+        th.join();
     }
+}
 
-    void WavBrowser::InitializeBrowser()
+void WavBrowser::RegisterForMediaFileUpdates(UpdateMediaFilesHandler&& media_files_update_handler)
+{
+    media_files_update_handler_ = std::move(media_files_update_handler);
+}
+
+void WavBrowser::UpdateListOfFiles(MediaFileList&& media_file_liast, const EndOfFileStatus& eof_status)
+{
+    if (media_files_update_handler_)
     {
-        auto UpdateFileNameCallback = [this](const auto& file_name)
-        {
-            this->HandelFileName(file_name);
-        };
-        browser_->RegisterTOUpdateFileName(UpdateFileNameCallback);
-
-        auto BrowseDirectoryCallback = [this]()
-                                            {
-                                                browser_->BrowseDirectory(input_directory_,FileExtensionFilter::WavFile);
-                                            };
-        std::thread th{BrowseDirectoryCallback};
-        if(th.joinable())
-        {
-            th.join();
-        }
+        media_files_update_handler_(std::forward<MediaFileList>(media_file_liast), eof_status);
     }
+}
 
-    void WavBrowser::RegisterForMediaFileUpdates(UpdateMediaFilesHandler&& media_files_update_handler)
+void WavBrowser::HandelFileName(const std::string& file_name)
+{
+    if (END_OF_FILE == file_name)
     {
-        media_files_update_handler_ = std::move(media_files_update_handler);
+        UpdateListOfFiles(std::move(file_list_), EndOfFileStatus::EndOfFileReached);
+        file_list_.clear();
     }
-
-    void WavBrowser::UpdateListOfFiles(MediaFileList&& media_file_liast,const EndOfFileStatus& eof_status)
+    else if (NO_FILE_AVAILABLE == file_name)
     {
-        if(media_files_update_handler_)
-        {
-            media_files_update_handler_(std::forward<MediaFileList>(media_file_liast),eof_status);
-        }
+        UpdateListOfFiles(std::move(file_list_), EndOfFileStatus::NoFileAvailable);
     }
-
-    void WavBrowser::HandelFileName(const std::string& file_name)
+    else
     {
-        if(END_OF_FILE == file_name)
+        file_list_.emplace_back(file_name);
+
+        if (file_list_.size() >= MAX_FILE_LIST)
         {
-            UpdateListOfFiles(std::move(file_list_),EndOfFileStatus::EndOfFileReached);
+            UpdateListOfFiles(std::move(file_list_), EndOfFileStatus::ScanInProgress);
             file_list_.clear();
         }
-        else
-        {
-            file_list_.emplace_back(file_name);
-
-            if(file_list_.size() >= MAX_FILE_LIST)
-            {
-                UpdateListOfFiles(std::move(file_list_),EndOfFileStatus::ScanInProgress);
-                file_list_.clear();
-            }
-        }
     }
-
 }
+
+}  // namespace encoder

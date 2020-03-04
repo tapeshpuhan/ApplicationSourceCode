@@ -1,5 +1,5 @@
 //
-// Created by gl-273 on 2/14/20.
+// Created Tapeswar Puhan
 //
 
 #ifndef MP3ENCODER_DIRECTORY_BROWSER_H
@@ -8,27 +8,26 @@
 
 namespace encoder
 {
-    using UpdateFileNameHandler = std::function<void(const std::string&)>;
+using UpdateFileNameHandler = std::function<void(const std::string&)>;
 
-    const  std::string END_OF_FILE{"END_OF_FILE"};
+const std::string END_OF_FILE{"END_OF_FILE"};
+const std::string NO_FILE_AVAILABLE{"NO_FILE_AVAILABLE"};
+class DirectoryBrowser final
+{
+  public:
+    DirectoryBrowser() = default;
+    ~DirectoryBrowser() = default;
+    DirectoryBrowser(DirectoryBrowser&) = delete;
+    DirectoryBrowser& operator=(DirectoryBrowser&&) = delete;
+    void RegisterTOUpdateFileName(UpdateFileNameHandler&& file_name_handler);
+    void BrowseDirectory(const DirectoryName& input_directory, const std::string& file_extension);
 
-    class DirectoryBrowser final
-    {
-    public:
-        DirectoryBrowser()= default;
-        ~DirectoryBrowser()= default;
-        DirectoryBrowser(DirectoryBrowser&)= delete;
-        DirectoryBrowser& operator=(DirectoryBrowser&&)=delete;
-        void RegisterTOUpdateFileName(UpdateFileNameHandler&& file_name_handler);
-        void BrowseDirectory(const DirectoryName& input_directory, const std::string& file_extension);
+  private:
+    std::string GetFileExtension(const std::string& file_name);
+    void UpdateFileName(const std::string& file_name);
+    bool IsIEqual(const std::string& source, const std::string& destination);
 
-    private:
-
-        std::string GetFileExtension(const std::string& file_name);
-        void UpdateFileName(const std::string& file_name);
-        bool IsIEqual(const std::string& source, const std::string& destination);
-
-        UpdateFileNameHandler file_name_handler_{nullptr};
-    };
-}
-#endif //MP3ENCODER_DIRECTORY_BROWSER_H
+    UpdateFileNameHandler file_name_handler_{nullptr};
+};
+}  // namespace encoder
+#endif  // MP3ENCODER_DIRECTORY_BROWSER_H

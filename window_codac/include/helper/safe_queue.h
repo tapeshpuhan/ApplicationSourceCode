@@ -7,8 +7,10 @@
 #include <chrono>
 #include <condition_variable>
 #include <functional>
-#include <mutex>
+#include <future>
 #include <list>
+#include <mutex>
+#include <optional>
 #include <thread>
 #include <vector>
 namespace encoder
@@ -18,12 +20,12 @@ template <typename TYPE_MSG>
 class SafeQueue
 {
   public:
-    SafeQueue()= default;
+    SafeQueue() = default;
     void Push(const TYPE_MSG& param);
     void Push(const std::vector<TYPE_MSG>& param);
-    TYPE_MSG Pop();
+    std::pair<TYPE_MSG, bool> Pop();
     void ShutDown();
-    bool IsEmpty()const ;
+    bool IsEmpty() const;
     size_t Size() const { return queue_.size(); }
     ~SafeQueue() { ShutDown(); }
 
@@ -48,19 +50,24 @@ template <typename TYPE_MSG>
 void SafeQueue<TYPE_MSG>::Push(const std::vector<TYPE_MSG>& param)
 {
     std::unique_lock<std::mutex> lk(queue_lock_);
-    std::copy(begin(param),end(param),std::back_inserter(queue_));
+    std::transform(
+        begin(param), end(param), std::back_inserter(queue_), [](const auto& list_info) { return list_info; });
     lk.unlock();
     lock_cond_.notify_one();
 }
 
 template <typename TYPE_MSG>
-TYPE_MSG SafeQueue<TYPE_MSG>::Pop()
+std::pair<TYPE_MSG, bool> SafeQueue<TYPE_MSG>::Pop()
 {
     std::unique_lock<std::mutex> lk(queue_lock_);
     lock_cond_.wait(lk, [this]() { return !queue_.empty() || shut_down_.load(); });
-    auto task  = queue_.front();
-    queue_.pop_front();
-    return task;
+    if (true != shut_down_.load())
+    {
+        auto task = queue_.front();
+        queue_.pop_front();
+        return {task, true};
+    }
+    return {{}, false};
 }
 
 template <typename TYPE_MSG>
@@ -74,10 +81,10 @@ void SafeQueue<TYPE_MSG>::ShutDown()
 }
 
 template <typename TYPE_MSG>
-bool SafeQueue<TYPE_MSG>::IsEmpty()const
+bool SafeQueue<TYPE_MSG>::IsEmpty() const
 {
     return queue_.empty();
 }
 
-}  // namespace
+}  // namespace encoder
 #endif  // SAFE_QUEUE_H

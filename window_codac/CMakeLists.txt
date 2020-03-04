@@ -7,7 +7,8 @@ file(GLOB SOURCES "src/*.cpp")
 set(CMAKE_CXX_STANDARD 17)
 link_libraries(stdc++fs)
 link_libraries(pthread)
+link_libraries(/usr/lib/x86_64-linux-gnu/libmp3lame.a)
 add_executable(mp3encoder main.cpp ${SOURCES} src/browser/wav_browser.cpp
         src/encoder/lame_encoder.cpp
         src/encoder/mp3_encoder.cpp
-        src/browser/directory_browser.cpp)
+        src/browser/directory_browser.cpp  src/encoder/wav_header.cpp)
