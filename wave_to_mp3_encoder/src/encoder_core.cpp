@@ -50,6 +50,7 @@ void EncoderCore<MediaBrowser, MediaEncoder>::EncodeMediaFiles(MediaFileList&& m
     }
     else
     {
+        ShutDownTaskPool();
         SetFinishedStatus();
     }
 }
@@ -115,8 +116,7 @@ void EncoderCore<MediaBrowser, MediaEncoder>::ValidateAllFilesEncoded()
     if ((number_of_files_to_encode_ == number_of_files_encode_finished_) &&
         (eof_file_status_ == EndOfFileStatus::EndOfFileReached))
     {
-		shut_down_.store(false);
-		std::this_thread::yield();
+
         try
         {
             SetFinishedStatus();
@@ -132,6 +132,8 @@ void EncoderCore<MediaBrowser, MediaEncoder>::ValidateAllFilesEncoded()
 template <typename MediaBrowser, typename MediaEncoder>
 void EncoderCore<MediaBrowser, MediaEncoder>::SetFinishedStatus()
 {
+    shut_down_.store(false);
+	std::this_thread::yield();
     get_encoder_status_.set_value(EncoderStatus::EncodeFinished);
 }
 
