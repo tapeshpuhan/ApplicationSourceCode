@@ -1,0 +1,51 @@
+@startuml
+class EncoderInterface
+{
+    +EncodeWaveToMp3(input_path,output_path)
+}
+class EncoderCore<BrowserType, EncoderType>
+{
+    +InitializeCore()
+}
+class WavBrowser
+{
+    +InitializeBrowser()
+}
+class DirectoryBrowser
+{
+    +BrowseDirectory(Directory Folder Path, file extension)
+}
+class Mp3Encoder
+{
+    +EncodeMediaFiles(file path to encode)
+}
+interface IEncoder
+{
+    +EncodeMediaFile(file path)
+    +Create()
+    -EncodeMediaFileImplement(file path)
+    -CreateImplement()
+}
+class LameEncoder
+{
+    -EncodeMediaFileImplement(file path)
+    -CreateImplement()
+}
+class LameWindowEncoder
+{
+    -EncodeMediaFileImplement(file path)
+    -CreateImplement()
+}
+note left of EncoderInterface : provide interface to client application
+note top of EncoderCore : adapter to any type of Browser and Encoder
+note left of WavBrowser : browse wave files from the input directory
+note right of DirectoryBrowser : iterate all the files\nfrom the input directory for file extension 
+note left of IEncoder : Abstract class to encode media files\n with concrete class \nLameEncoder for Linux and LameWindowEncoder for windows
+EncoderInterface *-- EncoderCore
+EncoderCore *-- WavBrowser
+WavBrowser *-- DirectoryBrowser
+EncoderCore *-- Mp3Encoder
+Mp3Encoder o-- IEncoder
+IEncoder <|-- LameEncoder
+IEncoder <|-- LameWindowEncoder
+@enduml
