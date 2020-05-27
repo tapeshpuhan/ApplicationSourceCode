@@ -5,12 +5,7 @@
 #ifndef MP3ENCODER_ENCODER_INTERFACE_H
 #define MP3ENCODER_ENCODER_INTERFACE_H
 #include <browser/wav_browser.h>
-#ifdef __linux__
-#include <encoder/lame_encoder_linux.h>
-#else
 #include <encoder/lame_encoder.h>
-#endif
-
 #include <encoder/mp3_encoder.h>
 #include <encoder_core.h>
 
