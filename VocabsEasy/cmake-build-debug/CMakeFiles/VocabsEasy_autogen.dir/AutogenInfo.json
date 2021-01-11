@@ -1,0 +1,112 @@
+{
+	"BUILD_DIR" : "/home/user/test/VocabsEasy/cmake-build-debug/VocabsEasy_autogen",
+	"CMAKE_BINARY_DIR" : "/home/user/test/VocabsEasy/cmake-build-debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/user/test/VocabsEasy/cmake-build-debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/user/test/VocabsEasy",
+	"CMAKE_EXECUTABLE" : "/home/user/Downloads/CLion-2020.1.2/clion-2020.1.2/bin/cmake/linux/bin/cmake",
+	"CMAKE_SOURCE_DIR" : "/home/user/test/VocabsEasy",
+	"HEADERS" : 
+	[
+		[
+			"/home/user/test/VocabsEasy/vocabs_app/get_resource_information.h",
+			"Mu",
+			"RXTCD57Y2C/moc_get_resource_information.cpp"
+		],
+		[
+			"/home/user/test/VocabsEasy/vocabs_app/verb.h",
+			"Mu",
+			"RXTCD57Y2C/moc_verb.cpp"
+		],
+		[
+			"/home/user/test/VocabsEasy/vocabs_app/vocabs_data.h",
+			"Mu",
+			"RXTCD57Y2C/moc_vocabs_data.cpp"
+		],
+		[
+			"/home/user/test/VocabsEasy/vocabs_ui/main_window.h",
+			"Mu",
+			"7F44DADGYV/moc_main_window.cpp"
+		],
+		[
+			"/home/user/test/VocabsEasy/vocabs_ui/verb_input.h",
+			"Mu",
+			"7F44DADGYV/moc_verb_input.cpp"
+		],
+		[
+			"/home/user/test/VocabsEasy/vocabs_ui/verb_practice.h",
+			"Mu",
+			"7F44DADGYV/moc_verb_practice.cpp"
+		],
+		[
+			"/home/user/test/VocabsEasy/vocabs_ui/verb_window.h",
+			"Mu",
+			"7F44DADGYV/moc_verb_window.cpp"
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "/home/user/test/VocabsEasy/cmake-build-debug/VocabsEasy_autogen/include",
+	"MOC_COMPILATION_FILE" : "/home/user/test/VocabsEasy/cmake-build-debug/VocabsEasy_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : [ "QT_CORE_LIB", "QT_GUI_LIB", "QT_WIDGETS_LIB" ],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"/home/user/test/VocabsEasy/cmake-build-debug",
+		"/home/user/test/VocabsEasy",
+		"/home/user/test/VocabsEasy/vocabs_app",
+		"/home/user/test/VocabsEasy/vocabs_ui",
+		"/opt/Qt/5.15.0/gcc_64/include",
+		"/opt/Qt/5.15.0/gcc_64/include/QtCore",
+		"/opt/Qt/5.15.0/gcc_64/mkspecs/linux-g++",
+		"/opt/Qt/5.15.0/gcc_64/include/QtGui",
+		"/opt/Qt/5.15.0/gcc_64/include/QtWidgets",
+		"/usr/include",
+		"/usr/include/c++/7",
+		"/usr/include/x86_64-linux-gnu/c++/7",
+		"/usr/include/c++/7/backward",
+		"/usr/lib/gcc/x86_64-linux-gnu/7/include",
+		"/usr/local/include",
+		"/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed",
+		"/usr/include/x86_64-linux-gnu"
+	],
+	"MOC_MACRO_NAMES" : [ "Q_OBJECT", "Q_GADGET", "Q_NAMESPACE", "Q_NAMESPACE_EXPORT" ],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : true,
+	"MOC_PREDEFS_CMD" : 
+	[
+		"/usr/bin/c++",
+		"-dM",
+		"-E",
+		"-c",
+		"/home/user/Downloads/CLion-2020.1.2/clion-2020.1.2/bin/cmake/linux/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp"
+	],
+	"MOC_PREDEFS_FILE" : "/home/user/test/VocabsEasy/cmake-build-debug/VocabsEasy_autogen/moc_predefs.h",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 8,
+	"PARSE_CACHE_FILE" : "/home/user/test/VocabsEasy/cmake-build-debug/CMakeFiles/VocabsEasy_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "/opt/Qt/5.15.0/gcc_64/bin/moc",
+	"QT_UIC_EXECUTABLE" : "",
+	"QT_VERSION_MAJOR" : 5,
+	"SETTINGS_FILE" : "/home/user/test/VocabsEasy/cmake-build-debug/CMakeFiles/VocabsEasy_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[ "/home/user/test/VocabsEasy/main.cpp", "Mu" ],
+		[
+			"/home/user/test/VocabsEasy/vocabs_app/get_resource_information.cpp",
+			"Mu"
+		],
+		[ "/home/user/test/VocabsEasy/vocabs_app/verb.cpp", "Mu" ],
+		[ "/home/user/test/VocabsEasy/vocabs_ui/main_window.cpp", "Mu" ],
+		[ "/home/user/test/VocabsEasy/vocabs_ui/verb_input.cpp", "Mu" ],
+		[ "/home/user/test/VocabsEasy/vocabs_ui/verb_practice.cpp", "Mu" ],
+		[ "/home/user/test/VocabsEasy/vocabs_ui/verb_window.cpp", "Mu" ]
+	],
+	"VERBOSITY" : 0
+}

@@ -1,0 +1,4 @@
+/home/user/test/VocabsEasy/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/user/test/VocabsEasy/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/user/test/VocabsEasy/cmake-build-debug/CMakeFiles/VocabsEasy.dir
+/home/user/test/VocabsEasy/cmake-build-debug/CMakeFiles/VocabsEasy_autogen.dir

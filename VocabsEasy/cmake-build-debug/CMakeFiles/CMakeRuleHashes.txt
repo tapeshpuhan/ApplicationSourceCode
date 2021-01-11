@@ -1,0 +1,2 @@
+# Hashes of file build rules.
+b810cd20dc595821d6005a9dfb0247d0 CMakeFiles/VocabsEasy_autogen

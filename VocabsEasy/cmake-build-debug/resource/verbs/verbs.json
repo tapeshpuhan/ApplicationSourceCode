@@ -1,0 +1,80 @@
+{
+  "beginnen": {
+  "name": "beginnen",
+  "type": "regular",
+  "sub_type": "none",
+  "case_type": "akk",
+  "level": "1",
+    "base": "beginn",
+    "english": "To Begin",
+    "hindi": "Suru karo",
+    "sentence": "I start tonight.",
+    "satz": "Ich beginnen heute Abend an."
+  },
+  "besuchen": {
+    "name": "besuchen",
+    "type": "regular",
+    "sub_type": "none",
+    "case_type": "akk",
+    "level": "1",
+    "base": "besuch",
+    "english": "To Visit",
+    "hindi": "Yatra karna",
+    "sentence": "I visit to my friend.",
+    "satz": "Ich besuche meinen Freund."
+  },
+  "bezahlen": {
+    "name": "bezahlen",
+    "type": "regular",
+    "sub_type": "none",
+    "case_type": "akk",
+    "level": "1",
+    "base": "bezahl",
+    "english": "To Pay",
+    "hindi": "Betan Dijie",
+    "sentence": "I usually pay my bills on time.",
+    "satz": "Ich bezahle meine Rechnungen normalerweise pünktlich."
+  },
+  "kommenen": {
+    "name": "kommen",
+    "type": "regular",
+    "sub type": "none",
+    "case_type": "akk",
+    "level": "1",
+    "base": "komm",
+    "english": "To Come",
+    "hindi": "Aaie",
+    "sentence": "Please come to my cabin.",
+    "satz": "Bitte kommen Sie in meine Kabine."
+  },
+  "wissen": {
+    "name": "wissen",
+    "type": "irregular",
+    "sub_type": "none",
+    "case_type": "akk",
+    "level": "1",
+    "base": "wiss",
+    "ich": "weiß",
+    "du": "weißt",
+    "er": "weiß",
+    "english": "to know",
+    "hindi": "Jan naa",
+    "sentence": "I know that he is 12 year old.",
+    "satz": "Ich weiß, dass er 12 Jahre alt ist.[Exact Fact]"
+  },
+  "essen": {
+    "name": "essen",
+    "type": "irregular",
+    "sub_type": "none",
+    "case_type": "akk",
+    "level": "1",
+    "base": "esse",
+    "ich": "esse",
+    "du": "isst",
+    "er": "isst",
+    "english": "to eat",
+    "hindi": "Khana",
+    "sentence": "I do not eat Chinese.",
+    "satz": "Ich esse kein Chinesisch."
+  }
+}
