@@ -69,9 +69,11 @@ VerbInput::VerbInput(QWidget* parents,const std::shared_ptr<VerbProcess> verbPro
 
     auto bottomLayout = new QHBoxLayout;
     m_next = new QPushButton("Next",this);
+    m_back = new QPushButton("Back",this);
     m_practice = new QPushButton("Practice",this);
     m_repeat = new QPushButton("repeat",this);
     bottomLayout->addWidget(m_next);
+    bottomLayout->addWidget(m_back);
     bottomLayout->addWidget(m_practice);
     bottomLayout->addWidget(m_repeat);
     row2Layout->addLayout(bottomLayout);
@@ -83,6 +85,7 @@ VerbInput::VerbInput(QWidget* parents,const std::shared_ptr<VerbProcess> verbPro
     connect(m_verbProcess.get(),&VerbProcess::updateVerb, this, &VerbInput::onVerbUpdate);
     connect(m_verbProcess.get(),&VerbProcess::maxIndex, this, &VerbInput::onIndexMax);
     connect(m_next,&QPushButton::clicked, this, &VerbInput::onNextClicked);
+    connect(m_back,&QPushButton::clicked, this, &VerbInput::onBackClicked);
     connect(m_practice,&QPushButton::clicked, this, &VerbInput::onPracticeClicked);
     connect(m_repeat,&QPushButton::clicked, this, &VerbInput::onRepeatClicked);
 
@@ -149,6 +152,11 @@ void VerbInput::onVerbUpdate(const Verb& verb)
 void VerbInput::onNextClicked()
 {
     m_verbProcess->next();
+}
+
+void VerbInput::onBackClicked()
+{
+    m_verbProcess->back();
 }
 
 void VerbInput::onPracticeClicked()

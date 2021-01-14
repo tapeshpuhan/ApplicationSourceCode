@@ -10,9 +10,13 @@ public:
     VerbProcess(QObject* parent= nullptr);
     void setLevel(quint8 level);
     void next();
+    void back();
     void repeat();
+    void random();
     void nextPractice();
     bool checkName(const QString& verbName);
+    QString getName()const;
+    QString getGermanSentence()const;
     QStringList getOptions()const;
     void repeatPractice();
 signals:
@@ -26,5 +30,5 @@ private:
     size_t m_index{0};
     QStringList m_verbOptions;
     size_t m_randomIndex{0};
-    std::set<size_t> indexRecord;
+    std::vector<size_t> indexRecord;
 };

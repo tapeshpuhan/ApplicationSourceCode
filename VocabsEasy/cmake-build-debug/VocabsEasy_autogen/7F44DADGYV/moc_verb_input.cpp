@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_VerbInput_t {
-    QByteArrayData data[10];
-    char stringdata0[107];
+    QByteArrayData data[11];
+    char stringdata0[121];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -40,13 +40,15 @@ QT_MOC_LITERAL(4, 38, 4), // "Verb"
 QT_MOC_LITERAL(5, 43, 4), // "verb"
 QT_MOC_LITERAL(6, 48, 10), // "onIndexMax"
 QT_MOC_LITERAL(7, 59, 13), // "onNextClicked"
-QT_MOC_LITERAL(8, 73, 17), // "onPracticeClicked"
-QT_MOC_LITERAL(9, 91, 15) // "onRepeatClicked"
+QT_MOC_LITERAL(8, 73, 13), // "onBackClicked"
+QT_MOC_LITERAL(9, 87, 17), // "onPracticeClicked"
+QT_MOC_LITERAL(10, 105, 15) // "onRepeatClicked"
 
     },
     "VerbInput\0startPractice\0\0onVerbUpdate\0"
     "Verb\0verb\0onIndexMax\0onNextClicked\0"
-    "onPracticeClicked\0onRepeatClicked"
+    "onBackClicked\0onPracticeClicked\0"
+    "onRepeatClicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -56,7 +58,7 @@ static const uint qt_meta_data_VerbInput[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -64,20 +66,22 @@ static const uint qt_meta_data_VerbInput[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   44,    2, 0x06 /* Public */,
+       1,    0,   49,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       3,    1,   45,    2, 0x0a /* Public */,
-       6,    0,   48,    2, 0x0a /* Public */,
-       7,    0,   49,    2, 0x0a /* Public */,
-       8,    0,   50,    2, 0x0a /* Public */,
-       9,    0,   51,    2, 0x0a /* Public */,
+       3,    1,   50,    2, 0x0a /* Public */,
+       6,    0,   53,    2, 0x0a /* Public */,
+       7,    0,   54,    2, 0x0a /* Public */,
+       8,    0,   55,    2, 0x0a /* Public */,
+       9,    0,   56,    2, 0x0a /* Public */,
+      10,    0,   57,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void,
 
  // slots: parameters
     QMetaType::Void, 0x80000000 | 4,    5,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -96,8 +100,9 @@ void VerbInput::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 1: _t->onVerbUpdate((*reinterpret_cast< const Verb(*)>(_a[1]))); break;
         case 2: _t->onIndexMax(); break;
         case 3: _t->onNextClicked(); break;
-        case 4: _t->onPracticeClicked(); break;
-        case 5: _t->onRepeatClicked(); break;
+        case 4: _t->onBackClicked(); break;
+        case 5: _t->onPracticeClicked(); break;
+        case 6: _t->onRepeatClicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -141,13 +146,13 @@ int VerbInput::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 7;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 7)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 6;
+        _id -= 7;
     }
     return _id;
 }

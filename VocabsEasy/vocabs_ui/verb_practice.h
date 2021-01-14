@@ -34,6 +34,10 @@ private:
 
     QGroupBox* m_group;
     QLabel* m_image;
+    QLabel* m_sentence;
+    QLabel* m_germanSentence;
+    QLabel* m_english;
+    QLabel* m_hindi;
     QLineEdit* m_enterAnswer;
     QComboBox* m_answerList;
     QPushButton* m_next;

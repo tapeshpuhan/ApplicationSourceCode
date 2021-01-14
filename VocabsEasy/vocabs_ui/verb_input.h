@@ -22,6 +22,7 @@ public slots:
     void onVerbUpdate(const Verb& verb);
     void onIndexMax();
     void onNextClicked();
+    void onBackClicked();
     void onPracticeClicked();
     void onRepeatClicked();
 
@@ -43,6 +44,7 @@ private:
     QLabel* m_germanSentence{nullptr};
     QTableWidget* m_verbConjugation{nullptr};
     QPushButton* m_next{nullptr};
+    QPushButton* m_back{nullptr};
     QPushButton* m_practice{nullptr};
     QPushButton* m_repeat{nullptr};
 };

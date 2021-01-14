@@ -20,10 +20,11 @@ void VerbWindow::showInputWindow()
 
 void VerbWindow::onPractice()
 {
-    m_verbProcess->nextPractice();
     m_verbInput->hide();
     m_verbPractice->reset();
     m_verbPractice->show();
+    m_verbProcess->random();
+    m_verbProcess->nextPractice();
 }
 
 void VerbWindow::setLevel(int label)
@@ -35,6 +36,7 @@ void VerbWindow::setLevel(int label)
 void VerbWindow::onPracticeBack()
 {
     m_verbPractice->hide();
+    m_verbProcess->repeat();
     m_verbInput->show();
 }
 

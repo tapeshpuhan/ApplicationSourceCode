@@ -16,8 +16,21 @@ VerbPractice::VerbPractice(QWidget* parent, const std::shared_ptr<VerbProcess> v
     m_group = new QGroupBox(this);
 
     auto mainLayout = new QVBoxLayout(m_group);
+    auto imageLayout = new QHBoxLayout(m_group);
     m_image = new QLabel(this);
-    mainLayout->addWidget(m_image);
+    auto exampleLayout = new QVBoxLayout(m_group);
+    m_sentence = new QLabel(this);
+    m_germanSentence = new QLabel(this);
+    m_english = new QLabel(this);
+    m_hindi = new QLabel(this);
+    exampleLayout->addWidget(m_sentence);
+    exampleLayout->addWidget(m_germanSentence);
+    exampleLayout->addWidget(m_english);
+    exampleLayout->addWidget(m_hindi);
+
+    imageLayout->addWidget(m_image);
+    imageLayout->addLayout(exampleLayout);
+    mainLayout->addLayout(imageLayout);
     m_enterAnswer = new QLineEdit(this);
     m_next = new QPushButton("Next",this);
     m_answer = new QPushButton("Answer",this);
@@ -64,13 +77,17 @@ void VerbPractice::onBackClicked()
 
 void VerbPractice::onAnswerClicked()
 {
-    if(m_verbProcess->checkName(m_enterAnswer->text()))
+    if(m_enterAnswer->text().isEmpty())
     {
+        m_enterAnswer->setText(m_verbProcess->getName());
+    }
+    else if(m_verbProcess->checkName(m_enterAnswer->text()))
+    {
+        m_germanSentence->setText(m_verbProcess->getGermanSentence());
         if(QMessageBox::information(this, QStringLiteral("Result "),QStringLiteral("Success")))
         {
             m_answerList->clear();
             m_enterAnswer->clear();
-            onNextClicked();
         }
     } else{
         QMessageBox::information(this, QStringLiteral("Result "),QStringLiteral("Failed : Try again"));
@@ -85,6 +102,7 @@ void VerbPractice::onOptionsClicked()
 
 void VerbPractice::onNextClicked()
 {
+    m_germanSentence->clear();
     m_progress->setText("Wait");
     m_verbProcess->nextPractice();
 }
@@ -106,6 +124,15 @@ void VerbPractice::onVerbUpdate(const Verb& verb)
     m_image->updatesEnabled();
     m_image->setPixmap(QPixmap(verb.m_outputPath).scaled(300,300));
     m_image->update();
+
+    m_sentence->clear();
+    m_sentence->setText(verb.m_englishSentence);
+
+    m_english->clear();
+    m_english->setText(verb.m_englishMeaning);
+
+    m_hindi->clear();
+    m_hindi->setText(verb.m_hindiMeaning);
 }
 
 void VerbPractice::onIndexMax()
